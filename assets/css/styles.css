@@ -16,13 +16,13 @@
   --color-primary-800: #132e54;
   --color-primary-700: #1b4073;
   --color-primary-600: #2563eb;
-  
+
   /* Accents technologiques */
   --color-accent-electric: #0066ff;
   --color-accent-cyan: #00d2ff;
   --color-accent-cyan-light: #e0f8ff;
   --color-accent-glow: rgba(0, 210, 255, 0.18);
-  
+
   /* Nuances neutres & fonds épurés */
   --color-bg-base: #ffffff;
   --color-bg-subtle: #f8fafc;
@@ -30,43 +30,43 @@
   --color-bg-card-hover: #ffffff;
   --color-bg-deep: #0a192f;
   --color-bg-deep-card: #112340;
-  
+
   /* Typographie & Contraste */
   --color-text-main: #0f172a;
   --color-text-secondary: #475569;
   --color-text-muted: #64748b;
   --color-text-light: #f8fafc;
   --color-text-light-muted: #94a3b8;
-  
+
   /* Lignes & Bordures */
   --border-subtle: #e2e8f0;
   --border-light: #edf2f7;
   --border-focus: #0066ff;
   --border-deep-subtle: rgba(255, 255, 255, 0.08);
-  
+
   /* Ombres subtiles */
   --shadow-xs: 0 1px 2px 0 rgba(10, 25, 47, 0.04);
   --shadow-sm: 0 2px 8px -2px rgba(10, 25, 47, 0.06), 0 1px 3px 0 rgba(10, 25, 47, 0.03);
   --shadow-md: 0 10px 25px -5px rgba(10, 25, 47, 0.07), 0 4px 10px -3px rgba(10, 25, 47, 0.03);
   --shadow-lg: 0 20px 35px -8px rgba(10, 25, 47, 0.10), 0 8px 16px -4px rgba(10, 25, 47, 0.04);
   --shadow-cyan-sm: 0 4px 14px 0 rgba(0, 102, 255, 0.25);
-  
+
   /* Typographies */
   --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  
+
   /* Rayons de courbure */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
-  
+
   /* Transitions */
   --transition-fast: 0.18s ease;
   --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  
+
   /* Dimensions de layout */
   --max-width-container: 1240px;
   --nav-height: 80px;
@@ -75,7 +75,9 @@
 /* --------------------------------------------------------------------------
    2. RESET & STYLES DE BASE
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -110,7 +112,10 @@ a {
   transition: color var(--transition-fast);
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font: inherit;
 }
 
@@ -120,14 +125,20 @@ button {
   background: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 /* --------------------------------------------------------------------------
    3. TYPOGRAPHIE & HIÉRARCHIE VISUELLE
    -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--color-text-main);
   font-weight: 700;
@@ -506,7 +517,7 @@ p {
   transition: all var(--transition-fast);
 }
 
-.burger-line + .burger-line {
+.burger-line+.burger-line {
   margin-top: 5px;
 }
 
@@ -624,12 +635,10 @@ p {
   width: 100%;
   height: 100%;
   /* Superposition bleu profond très sobre et élégante */
-  background: linear-gradient(
-    135deg,
-    rgba(10, 25, 47, 0.94) 0%,
-    rgba(10, 25, 47, 0.85) 50%,
-    rgba(15, 37, 70, 0.72) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(10, 25, 47, 0.94) 0%,
+      rgba(10, 25, 47, 0.85) 50%,
+      rgba(15, 37, 70, 0.72) 100%);
   z-index: 2;
 }
 
@@ -679,8 +688,17 @@ p {
 }
 
 @keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }
 
 .hero-title {
@@ -754,8 +772,15 @@ p {
 }
 
 @keyframes scrollWheel {
-  0% { transform: translate(-50%, 0); opacity: 1; }
-  100% { transform: translate(-50%, 10px); opacity: 0; }
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, 10px);
+    opacity: 0;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1171,14 +1196,17 @@ p {
   .arguments-grid {
     grid-template-columns: repeat(6, 1fr);
   }
+
   .argument-card:nth-child(1),
   .argument-card:nth-child(2),
   .argument-card:nth-child(3) {
     grid-column: span 2;
   }
+
   .argument-card:nth-child(4) {
     grid-column: 2 / span 2;
   }
+
   .argument-card:nth-child(5) {
     grid-column: 4 / span 2;
   }
@@ -1464,7 +1492,7 @@ p {
   filter: grayscale(100%);
   transform: translateY(16px) scale(0.92);
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .partner-card:hover .partner-logo-bg img {
@@ -2040,7 +2068,7 @@ p {
   margin-top: 0.5rem;
 }
 
-.modal-section ul li + li {
+.modal-section ul li+li {
   margin-top: 0.35rem;
 }
 
@@ -2126,80 +2154,115 @@ p {
 }
 
 /* Échelonnage d'apparition */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
+.stagger-1 {
+  transition-delay: 0.1s;
+}
 
-/* --------------------------------------------------------------------------
-   19. RESPONSIVE DESIGN (Mobile-First adaptations)
-   -------------------------------------------------------------------------- */
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+
+/* =========================================================
+   19. RESPONSIVE DESIGN — MOBILE / TABLETTE
+   ========================================================= */
+
+/* ---------- TABLETTE ---------- */
 @media (max-width: 1024px) {
-  .nav-desktop {
-    display: none;
-  }
-  
+
+  /* Header */
+  .nav-desktop,
   .header-cta {
     display: none;
   }
-  
+
   .burger-btn {
     display: flex;
+    flex-shrink: 0;
   }
-  
+
+  .header-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .logo-brand {
+    min-width: 0;
+  }
+
+  .logo-text-group {
+    min-width: 0;
+  }
+
+  /* Présentation */
   .presentation-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .presentation-floating-card {
     right: 1rem;
     bottom: -1rem;
   }
-  
+
+  /* Valeurs */
+  .valeurs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Formations */
   .formations-grid {
     grid-template-columns: 1fr;
   }
-  
+
+  /* Arguments */
+  .arguments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .argument-card {
+    grid-column: auto !important;
+  }
+
+  /* Statistiques */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   .stat-item:nth-child(2) {
     border-right: none;
   }
-  
-  .stat-item:nth-child(3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
+
+  .stat-item:nth-child(3),
   .stat-item:nth-child(4) {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
-  
+
+  /* Résultats */
   .results-card {
     grid-template-columns: 1fr;
   }
-  
+
   .results-media {
     min-height: 300px;
     order: -1;
   }
-  
-  .valeurs-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
+
+  /* Partenaires */
   .partners-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  
+
+  /* Galerie */
   .gallery-item:nth-child(1),
   .gallery-item:nth-child(2),
   .gallery-item:nth-child(3),
@@ -2209,55 +2272,786 @@ p {
     grid-column: span 12;
     height: 280px;
   }
-  
+
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Footer */
   .footer-top {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-@media (max-width: 640px) {
+
+/* =========================================================
+   MOBILE / TABLETTE PETITE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
   :root {
     --nav-height: 72px;
   }
-  
+
+  /* Base */
+  html {
+    scroll-padding-top: var(--nav-height);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    line-height: 1.15;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  /* Évite les débordements */
+  .presentation-grid>*,
+  .formations-grid>*,
+  .arguments-grid>*,
+  .results-card>*,
+  .contact-grid>*,
+  .footer-top>* {
+    min-width: 0;
+  }
+
+
+  /* =====================================================
+     HEADER
+     ===================================================== */
+
+  .header {
+    height: var(--nav-height);
+  }
+
+  .header-container {
+    height: var(--nav-height);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .logo-img {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .logo-acronym {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
   .logo-sub {
     display: none;
   }
-  
+
+  .burger-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+
+  /* =====================================================
+     MENU MOBILE
+     ===================================================== */
+
+  .mobile-nav-drawer {
+    width: min(88vw, 360px);
+    max-width: 360px;
+    height: 100dvh;
+
+    padding:
+      calc(var(--nav-height) + 1rem) 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-menu {
+    gap: 0.4rem;
+  }
+
+  .mobile-menu a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .mobile-drawer-footer {
+    margin-top: 1.5rem;
+  }
+
+  .mobile-drawer-footer .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+
+  /* =====================================================
+     HERO
+     ===================================================== */
+
+  .hero-section {
+    min-height: 92svh;
+
+    padding-top: calc(var(--nav-height) + 2.5rem);
+    padding-bottom: 4rem;
+
+    background-position: center 35%;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-location {
+    max-width: 100%;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .hero-title {
+    font-size: clamp(2.15rem, 9vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
   .hero-actions {
+    width: 100%;
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
-  
+
   .hero-actions .btn {
     width: 100%;
+    min-height: 50px;
   }
-  
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+
+  /* =====================================================
+     PRÉSENTATION
+     ===================================================== */
+
+  .presentation-grid {
+    gap: 2rem;
+  }
+
+  .presentation-image-container {
+    width: 100%;
+  }
+
+  .presentation-image {
+    height: 340px;
+    object-fit: cover;
+  }
+
+  .presentation-floating-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+
+    width: calc(100% - 2rem);
+    max-width: none;
+
+    margin: -1.5rem 1rem 0;
+    z-index: 2;
+  }
+
+  .presentation-content {
+    width: 100%;
+  }
+
+  .pillar-item {
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+
+
+  /* =====================================================
+     VALEURS
+     ===================================================== */
+
+  .valeurs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+
+  .valeur-card {
+    padding: 1.4rem 1rem;
+  }
+
+
+  /* =====================================================
+     FORMATIONS
+     ===================================================== */
+
+  .formations-grid {
+    gap: 1.25rem;
+  }
+
+  .formation-card {
+    width: 100%;
+  }
+
+  .formation-image {
+    height: 220px;
+  }
+
+  .formation-body {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .formation-title {
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .formation-description {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .formation-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .formation-footer .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+
+  /* =====================================================
+     ARGUMENTS
+     ===================================================== */
+
+  .arguments-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .argument-card {
+    padding: 1.4rem;
+  }
+
+
+  /* =====================================================
+     STATISTIQUES
+     ===================================================== */
+
+  .stats-banner {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .stat-item {
+    padding: 1.4rem 1rem;
+    border-right: none;
+  }
+
+  .stat-item:nth-child(3),
+  .stat-item:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .stat-number {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+
+  /* =====================================================
+     RÉSULTATS
+     ===================================================== */
+
+  .results-card {
+    grid-template-columns: 1fr;
+  }
+
+  .results-media {
+    min-height: 250px;
+    height: 250px;
+  }
+
+  .results-content {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .results-breakdown {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .results-breakdown-item {
+    padding: 0.9rem 0.5rem;
+  }
+
+  .results-breakdown-item strong {
+    font-size: 1.25rem;
+  }
+
+  .results-breakdown-item span {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+
+  /* =====================================================
+     PARTENAIRES
+     ===================================================== */
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .partner-card {
+    min-height: 90px;
+    padding: 1rem 0.75rem;
+  }
+
+  .partner-logo-img {
+    max-width: 90px;
+    max-height: 48px;
+  }
+
+  /* Sur mobile, pas de hover :
+     le logo reste légèrement visible en arrière-plan */
+  .partner-logo-bg img {
+    opacity: 0.055;
+    transform: translateY(0) scale(1);
+  }
+
+  .partner-card:active .partner-logo-bg img {
+    opacity: 0.12;
+    transform: translateY(-6px) scale(1.05);
+  }
+
+  .partner-card:active .partner-logo-img {
+    transform: scale(1.04);
+  }
+
+
+  /* =====================================================
+     GALERIE
+     ===================================================== */
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(6) {
+    grid-column: span 1;
+    height: 230px;
+  }
+
+  /* Sur mobile, pas de hover :
+     les informations restent accessibles */
+  .gallery-overlay {
+    opacity: 1;
+    padding: 1rem;
+  }
+
+  .gallery-zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+
+  /* =====================================================
+     CONTACT
+     ===================================================== */
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+
+  .map-container {
+    height: 240px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .form-group textarea {
+    min-height: 130px;
+  }
+
+
+  /* =====================================================
+     CTA FINAL
+     ===================================================== */
+
+  .cta-final-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .cta-final-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .cta-final-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .cta-final-buttons .btn {
+    width: 100%;
+    min-height: 50px;
+  }
+
+
+  /* =====================================================
+     FOOTER
+     ===================================================== */
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+
+  /* =====================================================
+     MODALE FORMATION
+     ===================================================== */
+
+  .modal-dialog-overlay {
+    padding: 0.75rem;
+  }
+
+  .modal-dialog-card {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 1.5rem);
+    border-radius: 14px;
+  }
+
+  .modal-dialog-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modal-dialog-body {
+    padding: 1.25rem;
+  }
+
+  .modal-dialog-title {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+
+  /* =====================================================
+     LIGHTBOX
+     ===================================================== */
+
+  .lightbox-overlay {
+    padding: 0.75rem;
+  }
+
+  .lightbox-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .lightbox-figure {
+    max-width: 100%;
+    max-height: 85dvh;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 70dvh;
+    object-fit: contain;
+  }
+
+
+  /* =====================================================
+     BOUTONS
+     ===================================================== */
+
+  .btn {
+    min-height: 48px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Évite les textes trop longs qui débordent */
+  .hero-title,
+  .section-title,
+  .formation-title,
+  .results-main-highlight,
+  .cta-final-title {
+    overflow-wrap: break-word;
+  }
+}
+
+
+/* =========================================================
+   PETITS SMARTPHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  :root {
+    --nav-height: 68px;
+  }
+
+  .container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+
+  .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  /* Header */
+  .header-container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-acronym {
+    font-size: 1rem;
+  }
+
+  .burger-btn {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+
+  /* Hero */
+  .hero-section {
+    min-height: 90svh;
+    padding-top: calc(var(--nav-height) + 2rem);
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 2.65rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+  }
+
+
+  /* Présentation */
+  .presentation-image {
+    height: 280px;
+  }
+
+  .presentation-floating-card {
+    width: calc(100% - 1.5rem);
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
+
+  /* Valeurs */
   .valeurs-grid {
     grid-template-columns: 1fr;
   }
-  
-  .results-breakdown {
-    grid-template-columns: 1fr;
+
+
+  /* Formations */
+  .formation-image {
+    height: 200px;
   }
-  
+
+  .formation-body {
+    padding: 1.25rem 1rem;
+  }
+
+
+  /* Statistiques */
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
-  .stat-item {
+
+  .stat-item,
+  .stat-item:nth-child(3),
+  .stat-item:nth-child(4) {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.25rem 0;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
-  
+
   .stat-item:last-child {
     border-bottom: none;
   }
-  
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+
+
+  /* Résultats */
+  .results-media {
+    min-height: 210px;
+    height: 210px;
+  }
+
+  .results-content {
+    padding: 1.25rem 1rem;
+  }
+
+  .results-breakdown {
+    gap: 0.35rem;
+  }
+
+
+  /* Partenaires */
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .partner-card {
+    min-height: 82px;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .partner-logo-img {
+    max-width: 78px;
+    max-height: 42px;
+  }
+
+
+  /* Galerie */
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(6) {
+    height: 200px;
+  }
+
+
+  /* Contact */
+  .map-container {
+    height: 210px;
+  }
+
+
+  /* Modal */
+  .modal-dialog-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-dialog-card {
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .modal-dialog-body {
+    padding: 1rem;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ — RÉDUCTION DES ANIMATIONS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
