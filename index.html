@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LPELIA — Lycée Professionnel d’Électronique et d’Informatique Appliquée | Treichville, Abidjan</title>
+
+  <!-- Méta-descriptions SEO & Réseaux sociaux -->
+  <meta name="description"
+    content="Site officiel du LPELIA (Lycée Professionnel d’Électronique et d’Informatique Appliquée) à Treichville Arras 3, Abidjan. Formations BT Électronique et BTS Système Électronique et Informatique.">
+  <meta name="keywords"
+    content="LPELIA, Lycée Professionnel Treichville, Électronique, Informatique Appliquée, BTS SE, BT Électronique, Abidjan, Côte d'Ivoire, Formation professionnelle, TIC">
+  <meta name="author" content="LPELIA">
+  <meta property="og:title" content="LPELIA — Lycée Professionnel d’Électronique et d’Informatique Appliquée">
+  <meta property="og:description"
+    content="Former les talents de demain aux métiers de l’électronique et du numérique à Treichville Arras 3, Abidjan.">
+  <meta property="og:image" content="assets/images/hero_workshop.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Polices Google Fonts (Plus Jakarta Sans & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Favicon officiel LPELIA - METFPA -->
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo_lpelia.png">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       1. NAVIGATION FIXE ET MINIMALISTE
+       ========================================================================== -->
+  <header class="header" id="header" role="banner">
+    <div class="container header-container">
+      <!-- Marque & Logo officiel -->
+      <a href="#accueil" class="logo-brand" aria-label="LPELIA - Retour à l'accueil">
+        <img src="assets/images/logo_lpelia.png" alt="Blason officiel LPELIA - METFPA" class="logo-img" width="54"
+          height="68">
+        <div class="logo-text-group">
+          <span class="logo-acronym">LPELIA</span>
+          <span class="logo-sub">Treichville </span>
+        </div>
+      </a>
+
+      <!-- Menu Navigation Desktop -->
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <ul class="nav-menu">
+          <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+          <li><a href="#lycee" class="nav-link">Le lycée</a></li>
+          <li><a href="#formations" class="nav-link">Formations</a></li>
+          <li><a href="#resultats" class="nav-link">Résultats</a></li>
+          <li><a href="#partenaires" class="nav-link">Partenaires</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Bouton CTA Desktop -->
+      <div class="header-cta">
+        <a href="#formations" class="btn btn-primary" id="headerCtaBtn">
+          Découvrir nos formations
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Bouton Burger Mobile -->
+      <button class="burger-btn" id="burgerToggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false"
+        aria-controls="mobileDrawer">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu Latéral Mobile (Tiroir) -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu principal mobile">
+    <nav class="mobile-nav">
+      <ul class="mobile-menu">
+        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="#lycee" class="nav-link">Le lycée</a></li>
+        <li><a href="#formations" class="nav-link">Formations</a></li>
+        <li><a href="#pourquoi-choisir" class="nav-link">Pourquoi le LPELIA</a></li>
+        <li><a href="#resultats" class="nav-link">Résultats</a></li>
+        <li><a href="#partenaires" class="nav-link">Partenaires</a></li>
+        <li><a href="#galerie" class="nav-link">Galerie</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <a href="#formations" class="btn btn-primary" style="width: 100%;">Découvrir nos formations</a>
+      <p style="font-size: 0.8125rem; color: var(--color-text-muted); text-align: center;">Treichville Arras 3, Abidjan
+      </p>
+    </div>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         2. HERO IMMERSIF
+         ========================================================================== -->
+    <section class="hero-section" id="accueil" aria-label="Accueil LPELIA">
+      <div class="hero-background-wrapper">
+        <img src="assets/images/hero_workshop.jpg"
+          alt="Apprenants du LPELIA en travaux pratiques dans l'atelier technologique moderne" class="hero-bg-img"
+          loading="eager">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-grid-pattern" aria-hidden="true"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-content reveal-on-scroll">
+          <!-- Mention géographique demandée -->
+          <div class="hero-location-tag">
+            <span class="hero-location-dot" aria-hidden="true"></span>
+            Treichville Arras 3 · Abidjan
+          </div>
+
+          <!-- Titre principal officiel -->
+          <h1 class="hero-title">
+            Former les talents de demain aux métiers de <span class="highlight">l’électronique</span> et du <span
+              class="highlight">numérique</span>.
+          </h1>
+
+          <!-- Sous-titre officiel -->
+          <p class="hero-subtitle">
+            Le LPELIA forme à Treichville une nouvelle génération de professionnels compétents, responsables et prêts à
+            relever les défis technologiques.
+          </p>
+
+          <!-- Deux boutons d'action -->
+          <div class="hero-actions">
+            <a href="#formations" class="btn btn-cyan" id="heroBtnFormations">
+              Découvrir nos formations
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-outline-white" id="heroBtnContact">
+              Nous contacter
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repère visuel discret vers le bas de page -->
+      <a href="#lycee" class="hero-scroll-indicator" aria-label="Faire défiler vers la présentation du lycée">
+        <span class="scroll-icon-mouse" aria-hidden="true">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span>Découvrir</span>
+      </a>
+    </section>
+
+
+    <!-- ==========================================================================
+         3. PRÉSENTATION DU LYCÉE
+         ========================================================================== -->
+    <section class="section" id="lycee" aria-labelledby="sectionLyceeTitle">
+      <div class="container">
+        <div class="presentation-grid">
+
+          <!-- Visuel atelier / laboratoire -->
+          <div class="presentation-media reveal-on-scroll">
+            <div class="presentation-img-container">
+              <img src="assets/images/presentation_lab.jpg"
+                alt="Séance pratique au laboratoire d'électronique et systèmes du LPELIA" class="presentation-img"
+                loading="lazy">
+            </div>
+            <!-- Carte flottante institutionnelle -->
+            <div class="presentation-floating-card" aria-hidden="true">
+              <div class="floating-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <div>
+                <div class="floating-title">LPELIA </div>
+                <div class="floating-sub">Pôle d'excellence technique</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenu et texte institutionnel -->
+          <div class="presentation-content reveal-on-scroll">
+            <div class="badge-tag">Présentation de l'établissement</div>
+            <h2 class="section-title" id="sectionLyceeTitle">
+              L’excellence technique au service de l’avenir
+            </h2>
+            <p class="text-lead presentation-text">
+              Le Lycée Professionnel d’Électronique et d’Informatique Appliquée (LPELIA) est un établissement dédié à la
+              formation professionnelle dans les métiers des technologies de l’information et de la communication. Il
+              accompagne les apprenants vers des compétences concrètes, recherchées et adaptées aux réalités du monde
+              professionnel.
+            </p>
+
+            <!-- 3 blocs courts demandés -->
+            <div class="presentation-pillars">
+              <div class="pillar-item">
+                <div class="pillar-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                  </svg>
+                </div>
+                <div class="pillar-body">
+                  <h4>Formation pratique</h4>
+                  <p>Un enseignement ancré dans le réel, axé sur l’expérimentation en atelier et la manipulation directe
+                    des outils industriels.</p>
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                </div>
+                <div class="pillar-body">
+                  <h4>Compétences numériques</h4>
+                  <p>Une maîtrise approfondie de l’informatique appliquée, des architectures réseaux et des technologies
+                    électroniques actuelles.</p>
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <div class="pillar-body">
+                  <h4>Insertion professionnelle</h4>
+                  <p>Une préparation rigoureuse aux attentes des entreprises du secteur technologique pour une
+                    employabilité durable.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         4. MISSION, DEVISE ET VALEURS (Fond bleu profond)
+         ========================================================================== -->
+    <section class="section section--deep" id="valeurs" aria-labelledby="sectionDeviseTitle">
+      <div class="container">
+
+        <!-- Devise et Mission -->
+        <div class="devise-card reveal-on-scroll">
+          <div class="devise-label" id="sectionDeviseTitle">Notre Devise</div>
+          <blockquote class="devise-quote">
+            « Nous traçons les sillons de l’émergence numérique par les TIC. »
+          </blockquote>
+          <div class="devise-mission-box">
+            <div class="devise-mission-label">Notre Mission</div>
+            <p class="devise-mission-text">
+              « Former des professionnels qualifiés dans les métiers des TIC et contribuer au développement des
+              compétences techniques et numériques. »
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Valeurs du lycée -->
+        <div class="valeurs-grid">
+
+          <div class="valeur-card reveal-on-scroll stagger-1">
+            <div class="valeur-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </div>
+            <h3 class="valeur-title">Humilité</h3>
+            <p class="valeur-desc">Une posture constante d’apprentissage, de remise en question et d’écoute au service
+              de la maîtrise technique.</p>
+          </div>
+
+          <div class="valeur-card reveal-on-scroll stagger-2">
+            <div class="valeur-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3 class="valeur-title">Courtoisie</h3>
+            <p class="valeur-desc">Le respect rigoureux des personnes, des règles et des usagers pour forger un
+              savoir-être professionnel irréprochable.</p>
+          </div>
+
+          <div class="valeur-card reveal-on-scroll stagger-3">
+            <div class="valeur-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="valeur-title">Confiance mutuelle</h3>
+            <p class="valeur-desc">Une alliance transparente et solide entre apprenants, formateurs et partenaires
+              industriels.</p>
+          </div>
+
+          <div class="valeur-card reveal-on-scroll stagger-4">
+            <div class="valeur-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+              </svg>
+            </div>
+            <h3 class="valeur-title">Agir avec les moyens de bord</h3>
+            <p class="valeur-desc">L’ingéniosité, la résilience et le sens pratique pour transformer chaque situation en
+              opportunité de réussite concrète.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         5. FORMATIONS
+         ========================================================================== -->
+    <section class="section section--subtle" id="formations" aria-labelledby="sectionFormationsTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Offre Pédagogique</div>
+          <h2 class="section-title" id="sectionFormationsTitle">Des formations qui préparent au monde professionnel</h2>
+          <p class="section-subtitle">Des filières d'excellence conçues pour répondre aux exigences réelles des
+            entreprises du secteur technologique.</p>
+        </div>
+
+        <div class="formations-grid">
+
+          <!-- Carte 1 : BT Électronique -->
+          <article class="formation-card reveal-on-scroll">
+            <div class="formation-image-wrap">
+              <img src="assets/images/bt_electronique.jpg"
+                alt="Atelier technique pour le Brevet de Technicien Électronique au LPELIA" class="formation-image"
+                loading="lazy">
+              <div class="formation-level-badge">Diplôme d'État · Niveau BT</div>
+            </div>
+            <div class="formation-body">
+              <div class="formation-header-row">
+                <div class="formation-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <rect x="9" y="9" width="6" height="6" />
+                    <line x1="9" y1="1" x2="9" y2="4" />
+                    <line x1="15" y1="1" x2="15" y2="4" />
+                    <line x1="9" y1="20" x2="9" y2="23" />
+                    <line x1="15" y1="20" x2="15" y2="23" />
+                    <line x1="20" y1="9" x2="23" y2="9" />
+                    <line x1="20" y1="14" x2="23" y2="14" />
+                    <line x1="1" y1="9" x2="4" y2="9" />
+                    <line x1="1" y1="14" x2="4" y2="14" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="formation-title">BT Électronique</h3>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted); font-weight: 600;">Brevet de
+                    Technicien</span>
+                </div>
+              </div>
+
+              <!-- Description officielle fournie -->
+              <p class="formation-description">
+                Formation orientée vers l’étude, l’installation, la maintenance et le dépannage des systèmes
+                électroniques.
+              </p>
+
+              <!-- Tags techniques facilement modifiables -->
+              <div class="formation-tags">
+                <span class="tag-item">Installation</span>
+                <span class="tag-item">Maintenance préventive</span>
+                <span class="tag-item">Dépannage de circuits</span>
+                <span class="tag-item">Mesures électriques</span>
+              </div>
+
+              <div class="formation-footer">
+                <button type="button" class="btn btn-secondary" data-formation-trigger="bt" id="btnDetailsBT">
+                  En savoir plus
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                  </svg>
+                </button>
+                <span style="font-size: 0.8125rem; color: var(--color-accent-electric); font-weight: 600;">100% d'admis
+                  en 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Carte 2 : BTS Système Électronique et Informatique -->
+          <article class="formation-card reveal-on-scroll">
+            <div class="formation-image-wrap">
+              <img src="assets/images/bts_se_info.jpg"
+                alt="Apprenants en BTS Système Électronique et Informatique face aux racks serveurs et topologies réseau"
+                class="formation-image" loading="lazy">
+              <div class="formation-level-badge">Diplôme d'État · Niveau Bac+2</div>
+            </div>
+            <div class="formation-body">
+              <div class="formation-header-row">
+                <div class="formation-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="formation-title">BTS Système Électronique et Informatique</h3>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted); font-weight: 600;">Brevet de
+                    Technicien Supérieur</span>
+                </div>
+              </div>
+
+              <!-- Description officielle fournie -->
+              <p class="formation-description">
+                Formation dédiée aux systèmes électroniques, à l’informatique appliquée, aux réseaux et aux technologies
+                numériques.
+              </p>
+
+              <!-- Tags techniques facilement modifiables -->
+              <div class="formation-tags">
+                <span class="tag-item">Informatique appliquée</span>
+                <span class="tag-item">Architectures réseaux</span>
+                <span class="tag-item">Systèmes communicants</span>
+                <span class="tag-item">Technologies numériques</span>
+              </div>
+
+              <div class="formation-footer">
+                <button type="button" class="btn btn-secondary" data-formation-trigger="bts" id="btnDetailsBTS">
+                  En savoir plus
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                  </svg>
+                </button>
+                <span style="font-size: 0.8125rem; color: var(--color-accent-electric); font-weight: 600;">Formation
+                  d'avenir</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         6. POURQUOI CHOISIR LE LPELIA ?
+         ========================================================================== -->
+    <section class="section" id="pourquoi-choisir" aria-labelledby="sectionPourquoiTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Atouts Institutionnels</div>
+          <h2 class="section-title" id="sectionPourquoiTitle">Pourquoi choisir le LPELIA ?</h2>
+          <p class="section-subtitle">Un cadre structuré et rigoureux pour acquérir une véritable expertise technique et
+            accélérer votre insertion.</p>
+        </div>
+
+        <!-- Grille des 5 arguments officiels -->
+        <div class="arguments-grid">
+
+          <div class="argument-card reveal-on-scroll stagger-1">
+            <div class="argument-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3 class="argument-title">Un apprentissage concret et pratique</h3>
+            <p class="argument-text">Plus de temps passé en manipulation directe et en résolution de problèmes
+              techniques réels pour développer un savoir-faire immédiatement opérationnel.</p>
+          </div>
+
+          <div class="argument-card reveal-on-scroll stagger-2">
+            <div class="argument-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </div>
+            <h3 class="argument-title">Des ateliers et équipements techniques</h3>
+            <p class="argument-text">Des bancs d'essais, instruments de mesure étalonnés, postes informatiques récents
+              et matériels d'électronique répondant aux exigences du secteur.</p>
+          </div>
+
+          <div class="argument-card reveal-on-scroll stagger-3">
+            <div class="argument-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <line x1="19" y1="8" x2="19" y2="14" />
+                <line x1="22" y1="11" x2="16" y2="11" />
+              </svg>
+            </div>
+            <h3 class="argument-title">Un encadrement pédagogique de qualité</h3>
+            <p class="argument-text">Un corps professoral expérimenté, passionné et à l’écoute, qui transmet la rigueur
+              méthodologique et les bonnes pratiques industrielles.</p>
+          </div>
+
+          <div class="argument-card reveal-on-scroll stagger-4">
+            <div class="argument-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </div>
+            <h3 class="argument-title">Des partenariats professionnels et institutionnels</h3>
+            <p class="argument-text">Un écosystème connecté aux acteurs institutionnels et aux leaders de l'industrie
+              technologique en Côte d’Ivoire et à l'international.</p>
+          </div>
+
+          <div class="argument-card reveal-on-scroll stagger-1">
+            <div class="argument-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <h3 class="argument-title">Une formation tournée vers l’emploi et l’innovation</h3>
+            <p class="argument-text">Une veille constante sur les évolutions des TIC pour garantir que chaque diplômé
+              possède les compétences les plus recherchées du marché.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         7. CHIFFRES CLÉS (Statistiques animées)
+         ========================================================================== -->
+    <section class="stats-banner" id="chiffres-cles" aria-label="Chiffres clés de l'établissement">
+      <div class="container">
+
+        <div class="stats-grid">
+          <!-- 671 apprenants -->
+          <div class="stat-item reveal-on-scroll stagger-1">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-target="671">0</span>
+            </div>
+            <div class="stat-label">Apprenants au total</div>
+          </div>
+
+          <!-- 462 apprenants en BT -->
+          <div class="stat-item reveal-on-scroll stagger-2">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-target="462">0</span>
+            </div>
+            <div class="stat-label">Apprenants en BT</div>
+          </div>
+
+          <!-- 209 apprenants en BTS -->
+          <div class="stat-item reveal-on-scroll stagger-3">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-target="209">0</span>
+            </div>
+            <div class="stat-label">Apprenants en BTS</div>
+          </div>
+
+          <!-- 100 % d’admis au BT Électronique en 2026 -->
+          <div class="stat-item reveal-on-scroll stagger-4">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-target="100">0</span>
+              <span class="stat-suffix">%</span>
+            </div>
+            <div class="stat-label">d’admis au BT Électronique en 2026</div>
+          </div>
+        </div>
+
+        <!-- Phrase officielle demandée -->
+        <div class="stats-quote-bar reveal-on-scroll">
+          <p class="stats-quote-text">
+            « Des résultats qui témoignent de l’engagement des apprenants et des équipes pédagogiques. »
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         8. RÉSULTATS (Une culture de la réussite)
+         ========================================================================== -->
+    <section class="section" id="resultats" aria-labelledby="sectionResultatsTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Excellence Académique</div>
+          <h2 class="section-title" id="sectionResultatsTitle">Une culture de la réussite</h2>
+          <p class="section-subtitle">L’exigence et le dévouement de nos apprenants et formateurs se traduisent par des
+            performances remarquables aux examens officiels.</p>
+        </div>
+
+        <div class="results-card reveal-on-scroll">
+          <div class="results-content">
+            <div class="results-badge-row">
+              <div class="results-trophy-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7" />
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                </svg>
+              </div>
+              <span
+                style="font-family: var(--font-heading); font-size: 0.875rem; font-weight: 700; color: var(--color-accent-electric); letter-spacing: 0.05em; text-transform: uppercase;">Session
+                Officielle 2026</span>
+            </div>
+
+            <!-- Grande mise en avant officielle demandée -->
+            <div class="results-main-highlight">
+              BT Électronique 2026 :<br>
+              113 candidats · 113 admis · <span class="percent-perfect">100 % de réussite</span>
+            </div>
+
+            <p class="results-note">
+              Un taux de réussite parfait qui illustre la rigueur de notre encadrement, la régularité des travaux
+              dirigés et la préparation méthodique de chaque candidat aux épreuves pratiques et théoriques.
+            </p>
+
+            <div class="results-breakdown">
+              <div class="breakdown-box">
+                <div class="breakdown-num">113</div>
+                <div class="breakdown-label">Candidats</div>
+              </div>
+              <div class="breakdown-box">
+                <div class="breakdown-num">113</div>
+                <div class="breakdown-label">Admis</div>
+              </div>
+              <div class="breakdown-box">
+                <div class="breakdown-num" style="color: var(--color-accent-electric);">100%</div>
+                <div class="breakdown-label">Réussite</div>
+              </div>
+            </div>
+
+            <div>
+              <a href="#formations" class="btn btn-secondary">
+                Consulter les programmes
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Visuel d'apprenants célébrant leur réussite -->
+          <div class="results-media">
+            <img src="assets/images/resultats_excellence.jpg"
+              alt="Apprenants diplômés du LPELIA célébrant leur réussite en laboratoire" class="results-image"
+              loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         9. PARTENAIRES (Ils accompagnent notre vision)
+         ========================================================================== -->
+    <section class="section section--subtle" id="partenaires" aria-labelledby="sectionPartenairesTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Écosystème & Soutiens</div>
+          <h2 class="section-title" id="sectionPartenairesTitle">Ils accompagnent notre vision</h2>
+          <p class="section-subtitle">Des institutions de premier plan et des acteurs majeurs du secteur technique et du
+            développement.</p>
+        </div>
+
+        <!-- 8 partenaires demandés : AFD, IECD, UNESCO, BAD, Orange Côte d’Ivoire, RTI, FDFP, GIZ -->
+        <div class="partners-grid">
+
+          <div class="partner-card reveal-on-scroll stagger-1">
+            <span class="partner-brand-text">AFD</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-2">
+            <span class="partner-brand-text">IECD</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-3">
+            <span class="partner-brand-text">UNESCO</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-4">
+            <span class="partner-brand-text">BAD</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-1">
+            <span class="partner-brand-text">Orange Côte d’Ivoire</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-2">
+            <span class="partner-brand-text">RTI</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-3">
+            <span class="partner-brand-text">FDFP</span>
+          </div>
+
+          <div class="partner-card reveal-on-scroll stagger-4">
+            <span class="partner-brand-text">GIZ</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         10. GALERIE ÉDITORIALE ASYMÉTRIQUE (6 images)
+         ========================================================================== -->
+    <section class="section" id="galerie" aria-labelledby="sectionGalerieTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Immersion Visuelle</div>
+          <h2 class="section-title" id="sectionGalerieTitle">Le LPELIA au quotidien</h2>
+          <p class="section-subtitle">Découvrez nos ateliers, nos équipements technologiques et le travail méticuleux de
+            nos apprenants.</p>
+        </div>
+
+        <!-- Galerie éditoriale asymétrique 6 images -->
+        <div class="gallery-grid">
+
+          <!-- Image 1 : Ateliers & Travaux Pratiques -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Travaux pratiques sur bancs d'essai">
+            <img src="assets/images/presentation_lab.jpg"
+              alt="Travaux pratiques sur bancs d'essai et oscilloscopes en atelier" class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Atelier Pratique</span>
+              <h4 class="gallery-caption-title">Mesures et essais électroniques</h4>
+            </figcaption>
+          </figure>
+
+          <!-- Image 2 : Composants électroniques -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Composants électroniques et microprocesseur">
+            <img src="assets/images/gallery_components.jpg"
+              alt="Circuit électronique et microprocesseur haute précision" class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Composants & Microélectronique</span>
+              <h4 class="gallery-caption-title">Systèmes et circuits imprimés</h4>
+            </figcaption>
+          </figure>
+
+          <!-- Image 3 : Informatique, réseaux et câblage -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Baie de serveurs et câblage réseaux">
+            <img src="assets/images/bts_se_info.jpg" alt="Apprenants devant la baie de serveurs et câblage réseau"
+              class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Informatique & Réseaux</span>
+              <h4 class="gallery-caption-title">Administration système et câblage</h4>
+            </figcaption>
+          </figure>
+
+          <!-- Image 4 : Maintenance et soudure de précision -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Diagnostic et soudure en atelier">
+            <img src="assets/images/bt_electronique.jpg"
+              alt="Technicien en maintenance et réparation de carte électronique" class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Apprenant en Pratique</span>
+              <h4 class="gallery-caption-title">Maintenance et soudure de précision</h4>
+            </figcaption>
+          </figure>
+
+          <!-- Image 5 : Équipements technologiques et tests -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Laboratoire d'expérimentation">
+            <img src="assets/images/hero_workshop.jpg" alt="Atelier technologique d'électronique appliquée"
+              class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Équipements</span>
+              <h4 class="gallery-caption-title">Plateaux techniques modernes</h4>
+            </figcaption>
+          </figure>
+
+          <!-- Image 6 : Vie du lycée et réussite collective -->
+          <figure class="gallery-item reveal-on-scroll" tabindex="0" role="button"
+            aria-label="Agrandir : Vie du lycée et promotion d'apprenants">
+            <img src="assets/images/resultats_excellence.jpg"
+              alt="Promotion d'apprenants célébrant leur parcours au LPELIA" class="gallery-img" loading="lazy">
+            <div class="gallery-zoom-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <figcaption class="gallery-overlay">
+              <span class="gallery-caption-tag">Vie du Lycée</span>
+              <h4 class="gallery-caption-title">Dynamique de cohésion et d’excellence</h4>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         11. LOCALISATION ET CONTACT
+         ========================================================================== -->
+    <section class="section section--subtle" id="contact" aria-labelledby="sectionContactTitle">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge-tag">Renseignements & Visites</div>
+          <h2 class="section-title" id="sectionContactTitle">Venez découvrir le LPELIA</h2>
+          <p class="section-subtitle">Notre établissement vous accueille au cœur de la commune de Treichville pour
+            échanger sur vos projets de formation.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Colonne Informations de localisation & repères -->
+          <div class="contact-info-col reveal-on-scroll">
+            <div class="contact-address-card">
+              <div class="address-headline">
+                <div class="address-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; color: var(--color-primary-900);">Adresse de l'établissement</h3>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Site officiel de
+                    Treichville</span>
+                </div>
+              </div>
+
+              <!-- Adresse officielle fournie -->
+              <p class="address-text">
+                Treichville Arras 3, Abidjan, Côte d’Ivoire
+              </p>
+
+              <!-- Bouton Google Maps officiel "Obtenir l'itinéraire" -->
+              <a href="https://www.google.com/maps/search/?api=1&query=Treichville+Arras+3+Abidjan+Cote+d+Ivoire"
+                target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btnItineraire"
+                style="width: 100%; margin-bottom: 1.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                </svg>
+                Obtenir l’itinéraire
+              </a>
+
+              <!-- Champs clairement identifiés mais non inventés (exigence stricte) -->
+              <div class="contact-meta-fields">
+                <div class="meta-field-item">
+                  <span class="meta-field-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    Téléphone / WhatsApp
+                  </span>
+                  <span class="meta-field-status">Coordonnées officielles à paraître</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Email de contact
+                  </span>
+                  <span class="meta-field-status">Messagerie administrative à paraître</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    Réseaux Sociaux
+                  </span>
+                  <span class="meta-field-status">Canaux officiels en cours d'activation</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte stylisée centrée sur Treichville, Abidjan -->
+            <div class="map-embed-container" role="region" aria-label="Carte de localisation du LPELIA à Treichville">
+              <iframe class="map-embed-iframe"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.0150%2C5.2950%2C-3.9950%2C5.3120&amp;layer=mapnik&amp;marker=5.3035%2C-4.0050"
+                title="Carte d'accès au LPELIA, Treichville Arras 3" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <!-- Formulaire de contact institutionnel -->
+          <div class="contact-form-card reveal-on-scroll">
+            <h3 class="form-title">Envoyer un message</h3>
+            <p class="form-subtitle">Vous êtes futur apprenant, parent d'élève ou partenaire ? Laissez-nous un message
+              pour toute demande d'information.</p>
+
+            <form id="lpeliaContactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Nom complet *</label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="Ex: Yao Kouassi"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Adresse email *</label>
+                <input type="email" id="contactEmail" name="email" class="form-input"
+                  placeholder="Ex: contact@exemple.ci" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactProfile" class="form-label">Votre profil</label>
+                <select id="contactProfile" name="profile" class="form-select">
+                  <option value="apprenant">Futur apprenant</option>
+                  <option value="parent">Parent d’élève</option>
+                  <option value="entreprise">Entreprise / Recruteur</option>
+                  <option value="partenaire">Partenaire institutionnel</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Sujet</label>
+                <input type="text" id="contactSubject" name="subject" class="form-input"
+                  placeholder="Ex: Renseignement filière BTS SE">
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message *</label>
+                <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Votre message..."
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="btnSubmitContact" style="width: 100%;">
+                Transmettre votre demande
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+
+              <div class="form-feedback-message" id="formFeedback" role="alert"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         12. CTA FINAL & FOOTER
+         ========================================================================== -->
+    <section class="cta-final-section" aria-labelledby="ctaFinalTitle">
+      <div class="container">
+        <div class="cta-final-content reveal-on-scroll">
+          <div class="badge-tag">Rejoignez le LPELIA</div>
+          <h2 class="cta-final-title" id="ctaFinalTitle">
+            Construisez votre avenir dans les métiers du numérique.
+          </h2>
+          <p class="cta-final-text">
+            Rejoignez une communauté d’apprenants engagés et développez des compétences reconnues par les acteurs du
+            secteur technologique.
+          </p>
+          <div class="cta-final-buttons">
+            <a href="#contact" class="btn btn-cyan" id="ctaFinalBtnContact">
+              Nous contacter
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#formations" class="btn btn-outline-white" id="ctaFinalBtnFormations">
+              Découvrir les formations
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Footer Institutionnel -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+
+        <!-- Colonne établissement -->
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="logo-icon-mark" style="width: 38px; height: 38px; font-size: 1rem;" aria-hidden="true">LP</div>
+            <span
+              style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: #ffffff;">LPELIA</span>
+          </div>
+          <p class="footer-institution-name">
+            Lycée Professionnel d’Électronique et d’Informatique Appliquée
+          </p>
+          <p class="footer-address">
+            Treichville Arras 3, Abidjan<br>
+            République de Côte d’Ivoire
+          </p>
+        </div>
+
+        <!-- Liens rapides -->
+        <div class="footer-nav-col">
+          <h4 class="footer-column-title">Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#accueil" class="footer-nav-link">Accueil</a></li>
+            <li><a href="#lycee" class="footer-nav-link">Le Lycée</a></li>
+            <li><a href="#formations" class="footer-nav-link">Nos Formations</a></li>
+            <li><a href="#resultats" class="footer-nav-link">Résultats & Réussite</a></li>
+            <li><a href="#partenaires" class="footer-nav-link">Partenaires</a></li>
+            <li><a href="#contact" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Formations proposées -->
+        <div class="footer-nav-col">
+          <h4 class="footer-column-title">Filières</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#formations" class="footer-nav-link">BT Électronique</a></li>
+            <li><a href="#formations" class="footer-nav-link">BTS Système Électronique et Informatique</a></li>
+            <li><a href="#pourquoi-choisir" class="footer-nav-link">Pourquoi nous choisir</a></li>
+            <li><a href="#galerie" class="footer-nav-link">Galerie photos</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; 2026 LPELIA — Lycée Professionnel d’Électronique et d’Informatique Appliquée. Tous droits réservés.
+        </p>
+        <p class="footer-credits">
+          Treichville Arras 3 · Abidjan (Côte d’Ivoire)
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       MODALE ACCESSIBLE : FICHE FORMATION DÉTAILLÉE
+       ========================================================================== -->
+  <div class="modal-dialog-overlay" id="formationModal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="modalTitle">
+    <div class="modal-dialog-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Fermer la fiche détaillée">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="modal-body">
+        <span class="modal-tag" id="modalTag">Filière</span>
+        <h3 class="modal-title" id="modalTitle">Titre de la formation</h3>
+        <p class="text-lead" id="modalDescription">Description officielle du cursus.</p>
+
+        <div class="modal-section">
+          <h4>Compétences & Objectifs de formation</h4>
+          <ul id="modalObjectifsList"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h4>Débouchés & Perspectives professionnelles</h4>
+          <ul id="modalPerspectivesList"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h4>Modalités administratives & Admission</h4>
+          <p id="modalModalitesText"></p>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#contact" class="btn btn-primary" onclick="document.getElementById('modalCloseBtn').click()">
+            Poser une question sur cette filière
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       LIGHTBOX ACCESSIBLE : AGRANDISSEMENT DE LA GALERIE
+       ========================================================================== -->
+  <div class="lightbox-overlay" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-label="Visualiseur d'image grand format">
+    <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Fermer la vue agrandie">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      <figcaption class="lightbox-caption" id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
+
+  <!-- Script JS d'interactivité -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
