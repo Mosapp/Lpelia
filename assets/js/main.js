@@ -360,24 +360,52 @@ function initContactForm() {
 
   if (!form || !feedback) return;
 
+  // Adresse qui reçoit les demandes du formulaire
+  const DESTINATAIRE = 'celiabarrybattesti@yahoo.fr';
+
+  let hideTimer = null;
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const name = document.getElementById('contactName')?.value.trim();
     const email = document.getElementById('contactEmail')?.value.trim();
+    const profileSelect = document.getElementById('contactProfile');
+    const profile = profileSelect ? profileSelect.options[profileSelect.selectedIndex].text : '';
+    const subject = document.getElementById('contactSubject')?.value.trim();
+    const message = document.getElementById('contactMessage')?.value.trim();
 
-    if (!name || !email) {
-      alert('Veuillez renseigner votre nom et votre adresse email.');
+    if (!name || !email || !message) {
+      feedback.textContent = 'Veuillez renseigner votre nom, votre adresse email et votre message.';
+      feedback.className = 'form-feedback-message error';
+      feedback.style.display = 'block';
       return;
     }
 
-    // Affichage d'un retour clair et élégant
-    feedback.textContent = `Merci ${name}, votre message a bien été pris en compte. L’administration du LPELIA traitera votre demande.`;
-    feedback.className = 'form-feedback-message success';
-    form.reset();
+    // Préparation de l'email pré-rempli
+    const objet = `[Site LPELIA] ${subject || 'Demande d’information'} — ${name}`;
+    const corps =
+      `Nom complet : ${name}\n` +
+      `Email : ${email}\n` +
+      `Profil : ${profile}\n` +
+      `Sujet : ${subject || '—'}\n\n` +
+      `Message :\n${message}\n`;
 
-    setTimeout(() => {
+    const lienMail = `mailto:${DESTINATAIRE}` +
+      `?subject=${encodeURIComponent(objet)}` +
+      `&body=${encodeURIComponent(corps)}`;
+
+    // Ouvre l'application email du visiteur avec le message prêt à envoyer
+    window.location.href = lienMail;
+
+    feedback.textContent = `Merci ${name} ! Votre application email s’est ouverte avec votre message déjà rédigé : il ne vous reste plus qu’à cliquer sur « Envoyer ». Si rien ne s’ouvre, écrivez-nous directement à ${DESTINATAIRE}.`;
+    feedback.className = 'form-feedback-message success';
+    feedback.style.display = 'block';
+
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
       feedback.style.display = 'none';
-    }, 6000);
+      form.reset();
+    }, 12000);
   });
 }
