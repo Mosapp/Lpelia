@@ -3055,3 +3055,25 @@ p {
     transform: none !important;
   }
 }
+
+/* Infos confirmées : bien visibles */
+.meta-field-confirmed {
+  border-left: 4px solid #f97316;   /* change la couleur selon ton site */
+  background: rgba(249, 115, 22, 0.08);
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.meta-field-value {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f97316;
+  text-decoration: none;
+  word-break: break-word;   /* évite que l'email déborde sur mobile */
+}
+
+.meta-field-value:hover {
+  text-decoration: underline;
+}
