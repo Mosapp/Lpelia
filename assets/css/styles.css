@@ -1853,6 +1853,13 @@ p {
   border: 1px solid #a7f3d0;
 }
 
+.form-feedback-message.error {
+  display: block;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
 /* --------------------------------------------------------------------------
    16. CTA FINAL & FOOTER
    -------------------------------------------------------------------------- */
