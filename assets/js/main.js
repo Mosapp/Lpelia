@@ -3,15 +3,18 @@
  * Script d'interactivité : Navigation, Modales, Lightbox, Compteurs & Scroll Animations
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initStickyHeader();
   initMobileNavigation();
   initSmoothScroll();
+  initFormationsModal();
+  initContactForm();
+
+  // Attendre l'application du contenu (content.json) avant d'animer les chiffres
+  // (la galerie et sa visionneuse sont gérées par assets/js/content.js)
+  try { await (window.LPCMS && window.LPCMS.ready); } catch (e) { /* contenu par défaut */ }
   initScrollAnimations();
   initAnimatedCounters();
-  initFormationsModal();
-  initGalleryLightbox();
-  initContactForm();
 });
 
 /* --------------------------------------------------------------------------
@@ -294,64 +297,6 @@ function initFormationsModal() {
 }
 
 /* --------------------------------------------------------------------------
-   7. LIGHTBOX DE LA GALERIE ÉDITORIALE
-   -------------------------------------------------------------------------- */
-function initGalleryLightbox() {
-  const lightboxOverlay = document.getElementById('galleryLightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const closeBtn = document.getElementById('lightboxCloseBtn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  if (!lightboxOverlay || !lightboxImg || !galleryItems.length) return;
-
-  function openLightbox(item) {
-    const img = item.querySelector('img');
-    const title = item.querySelector('.gallery-caption-title')?.textContent || '';
-    const tag = item.querySelector('.gallery-caption-tag')?.textContent || '';
-
-    if (!img) return;
-
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || 'Photographie LPELIA';
-    lightboxCaption.textContent = title ? `${title} — ${tag}` : '';
-
-    lightboxOverlay.classList.add('open');
-    lightboxOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    closeBtn.focus();
-  }
-
-  function closeLightbox() {
-    lightboxOverlay.classList.remove('open');
-    lightboxOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    lightboxImg.src = '';
-  }
-
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => openLightbox(item));
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openLightbox(item);
-      }
-    });
-  });
-
-  closeBtn?.addEventListener('click', closeLightbox);
-  lightboxOverlay.addEventListener('click', (e) => {
-    if (e.target === lightboxOverlay) closeLightbox();
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightboxOverlay.classList.contains('open')) {
-      closeLightbox();
-    }
-  });
-}
-
-/* --------------------------------------------------------------------------
    8. GESTION DU FORMULAIRE DE CONTACT
    -------------------------------------------------------------------------- */
 function initContactForm() {
@@ -360,13 +305,15 @@ function initContactForm() {
 
   if (!form || !feedback) return;
 
-  // Adresse qui reçoit les demandes du formulaire
-  const DESTINATAIRE = 'celiabarrybattesti@yahoo.fr';
+  // Adresse qui reçoit les demandes du formulaire (modifiable depuis l'admin : champ « Email »)
+  const getDestinataire = () =>
+    document.querySelector('[data-edit="contact.email"]')?.textContent.trim() || 'celiabarrybattesti@yahoo.fr';
 
   let hideTimer = null;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const DESTINATAIRE = getDestinataire();
 
     const name = document.getElementById('contactName')?.value.trim();
     const email = document.getElementById('contactEmail')?.value.trim();
