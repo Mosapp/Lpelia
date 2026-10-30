@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin LPELIA</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #050d18;
+      --navy-900: #0a192f;
+      --navy-800: #132e54;
+      --blue: #0066ff;
+      --blue-600: #0052cc;
+      --cyan: #00d2ff;
+      --cyan-50: #e0f8ff;
+      --bg: #f3f6fa;
+      --panel: #ffffff;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --text: #0f172a;
+      --text-2: #475569;
+      --muted: #64748b;
+      --ok: #059669;
+      --ok-50: #ecfdf5;
+      --warn: #b45309;
+      --warn-50: #fffbeb;
+      --danger: #dc2626;
+      --danger-50: #fef2f2;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(10, 25, 47, .08), 0 4px 10px -3px rgba(10, 25, 47, .04);
+      --font-h: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+      --topbar: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--bg); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: none; }
+    img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ---------- Boutons ---------- */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; height: 40px; padding: 0 1rem; border-radius: 9px; font-family: var(--font-h); font-weight: 700; font-size: .875rem; white-space: nowrap; text-decoration: none; transition: background-color .15s, border-color .15s, color .15s, opacity .15s; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(0, 102, 255, .25); }
+    .btn-primary:hover:not(:disabled) { background: var(--blue-600); }
+    .btn-ghost { border: 1px solid var(--line-strong); background: #fff; color: var(--navy-900); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+    .btn-quiet { color: var(--text-2); height: 34px; padding: 0 .65rem; font-weight: 600; }
+    .btn-quiet:hover { color: var(--blue); background: #f1f5f9; }
+    .btn-danger { color: var(--danger); }
+    .btn-danger:hover { background: var(--danger-50); color: var(--danger); }
+    .btn-sm { height: 32px; padding: 0 .7rem; font-size: .8125rem; }
+    .icon-btn { width: 34px; height: 34px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-2); }
+    .icon-btn:hover:not(:disabled) { background: #f1f5f9; color: var(--blue); }
+    .icon-btn:disabled { opacity: .35; cursor: default; }
+    :focus-visible { outline: 3px solid rgba(0, 102, 255, .35); outline-offset: 2px; }
+
+    /* ---------- Champs ---------- */
+    .label { display: block; font-size: .8125rem; font-weight: 600; color: var(--navy-900); margin-bottom: .35rem; }
+    .input, .textarea { width: 100%; border: 1px solid var(--line-strong); border-radius: 9px; background: #fff; padding: .6rem .75rem; font-size: .9375rem; transition: border-color .15s, box-shadow .15s; }
+    .textarea { resize: none; overflow: hidden; min-height: 42px; line-height: 1.5; }
+    .input:focus, .textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0, 102, 255, .14); }
+    .hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ======================= CONNEXION ======================= */
+    .login { min-height: 100%; display: grid; place-items: center; padding: 2rem 1rem; background: radial-gradient(1200px 600px at 10% -10%, rgba(0, 210, 255, .18), transparent 60%), linear-gradient(160deg, var(--navy-950), var(--navy-900) 55%, var(--navy-800)); }
+    .login-card { width: 100%; max-width: 460px; background: #fff; border-radius: 18px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .5); padding: 2rem; }
+    .login-brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.5rem; }
+    .login-brand img { width: 44px; height: 56px; object-fit: contain; }
+    .login-brand h1 { font-family: var(--font-h); font-size: 1.25rem; font-weight: 800; color: var(--navy-900); line-height: 1.2; }
+    .login-brand p { font-size: .8125rem; color: var(--muted); }
+    .login-intro { color: var(--text-2); font-size: .875rem; margin-bottom: 1.25rem; }
+    .form-row { margin-bottom: 1rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .check { display: flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--text-2); margin: .25rem 0 1.25rem; }
+    .check input { width: 16px; height: 16px; accent-color: var(--blue); }
+    .login-error { background: var(--danger-50); color: var(--danger); border-radius: 9px; padding: .65rem .8rem; font-size: .875rem; margin-bottom: 1rem; }
+    .login .btn-primary { width: 100%; height: 46px; font-size: .9375rem; }
+    .login-alt { display: block; width: 100%; text-align: center; margin-top: .9rem; font-size: .8125rem; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .login-alt:hover { color: var(--blue); }
+    details.help { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1rem; font-size: .8125rem; color: var(--text-2); }
+    details.help summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
+    details.help ol { margin: .6rem 0 0 1.1rem; display: grid; gap: .35rem; }
+    details.help code { background: #f1f5f9; padding: .05rem .35rem; border-radius: 4px; font-size: .78rem; }
+    details.help a { color: var(--blue); }
+    .more-settings summary { font-size: .8125rem; color: var(--muted); cursor: pointer; margin-bottom: .75rem; }
+
+    /* ======================= APPLICATION ======================= */
+    .app { height: 100%; display: grid; grid-template-rows: var(--topbar) 1fr; }
+    .topbar { display: flex; align-items: center; gap: .75rem; padding: 0 1rem; background: var(--navy-900); color: #fff; position: relative; z-index: 5; }
+    .tb-brand { display: flex; align-items: center; gap: .6rem; margin-right: auto; min-width: 0; }
+    .tb-brand img { width: 30px; height: 38px; object-fit: contain; }
+    .tb-brand b { font-family: var(--font-h); font-weight: 800; font-size: 1rem; }
+    .tb-brand small { display: block; font-size: .72rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .status { display: inline-flex; align-items: center; gap: .45rem; height: 30px; padding: 0 .75rem; border-radius: 999px; font-size: .78rem; font-weight: 600; background: rgba(255, 255, 255, .08); color: #cbd5e1; white-space: nowrap; }
+    .status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #64748b; }
+    .status[data-state="dirty"] { color: #fde68a; background: rgba(251, 191, 36, .14); }
+    .status[data-state="dirty"]::before { background: #fbbf24; }
+    .status[data-state="busy"]::before { background: var(--cyan); animation: pulse 1s infinite; }
+    .status[data-state="ok"] { color: #a7f3d0; background: rgba(16, 185, 129, .14); }
+    .status[data-state="ok"]::before { background: #10b981; }
+    .status[data-state="error"] { color: #fecaca; background: rgba(239, 68, 68, .16); }
+    .status[data-state="error"]::before { background: #ef4444; }
+    @keyframes pulse { 50% { opacity: .3; } }
+    .topbar .btn-ghost { background: transparent; color: #e2e8f0; border-color: rgba(255, 255, 255, .22); }
+    .topbar .btn-ghost:hover:not(:disabled) { color: #fff; border-color: var(--cyan); }
+    .topbar .icon-btn { color: #cbd5e1; }
+    .topbar .icon-btn:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+    .menu-wrap { position: relative; }
+    .menu { position: absolute; right: 0; top: calc(100% + 8px); background: #fff; color: var(--text); border-radius: 10px; box-shadow: var(--shadow), 0 0 0 1px var(--line); padding: .35rem; min-width: 230px; z-index: 20; }
+    .menu button, .menu a { display: flex; width: 100%; align-items: center; gap: .6rem; padding: .55rem .7rem; border-radius: 7px; font-size: .875rem; text-align: left; color: var(--text); text-decoration: none; }
+    .menu button:hover, .menu a:hover { background: #f1f5f9; }
+    .menu hr { border: 0; border-top: 1px solid var(--line); margin: .3rem 0; }
+    .menu .menu-info { padding: .45rem .7rem; font-size: .75rem; color: var(--muted); }
+
+    .workspace { display: grid; grid-template-columns: minmax(380px, 470px) 1fr; min-height: 0; }
+    .editor { background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+    .tabs { display: flex; gap: .25rem; padding: .6rem .75rem 0; border-bottom: 1px solid var(--line); }
+    .tab { position: relative; padding: .6rem .8rem .75rem; font-family: var(--font-h); font-weight: 700; font-size: .875rem; color: var(--muted); }
+    .tab[aria-selected="true"] { color: var(--navy-900); }
+    .tab[aria-selected="true"]::after { content: ''; position: absolute; left: .6rem; right: .6rem; bottom: -1px; height: 3px; border-radius: 3px 3px 0 0; background: var(--blue); }
+    .tab .count { font-family: var(--font-b); font-size: .7rem; font-weight: 600; background: #f1f5f9; color: var(--muted); border-radius: 99px; padding: .05rem .4rem; margin-left: .2rem; }
+    .panel { flex: 1; overflow-y: auto; padding: 1rem .9rem 6rem; scroll-behavior: smooth; }
+    .search { position: relative; margin-bottom: .9rem; }
+    .search svg { position: absolute; left: .7rem; top: 50%; transform: translateY(-50%); color: var(--muted); }
+    .search .input { padding-left: 2.2rem; }
+
+    .group { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: .6rem; background: #fff; }
+    .group > summary { list-style: none; display: flex; align-items: center; gap: .5rem; padding: .8rem .9rem; cursor: pointer; font-family: var(--font-h); font-weight: 700; font-size: .9rem; color: var(--navy-900); }
+    .group > summary::-webkit-details-marker { display: none; }
+    .group > summary .chev { margin-left: auto; color: var(--muted); transition: transform .2s; }
+    .group[open] > summary .chev { transform: rotate(180deg); }
+    .group > summary .dot { width: 7px; height: 7px; border-radius: 50%; background: #fbbf24; }
+    .group-body { padding: 0 .9rem .9rem; display: grid; gap: .9rem; }
+    .field { border-radius: 9px; transition: background-color .3s, box-shadow .3s; }
+    .field.flash { background: var(--cyan-50); box-shadow: 0 0 0 6px var(--cyan-50); }
+    .field-head { display: flex; align-items: center; gap: .4rem; margin-bottom: .35rem; }
+    .field-head .label { margin: 0; }
+    .badge-mod { font-size: .68rem; font-weight: 700; color: var(--warn); background: var(--warn-50); border-radius: 99px; padding: .05rem .45rem; }
+    .field-reset { margin-left: auto; font-size: .75rem; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+    .field-reset:hover { color: var(--blue); }
+    .empty-search { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: .875rem; }
+
+    /* Images */
+    .img-card { display: grid; grid-template-columns: 120px 1fr; gap: .85rem; padding: .8rem; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: .6rem; background: #fff; }
+    .img-thumb { width: 120px; height: 90px; border-radius: 8px; object-fit: cover; background: #e2e8f0; }
+    .img-card h4 { font-family: var(--font-h); font-size: .875rem; color: var(--navy-900); }
+    .img-card .meta { font-size: .75rem; color: var(--muted); margin-bottom: .45rem; }
+    .img-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+
+    /* Galerie */
+    .drop { display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; border: 2px dashed var(--line-strong); border-radius: var(--radius); padding: 1.4rem 1rem; color: var(--text-2); background: #f8fafc; cursor: pointer; transition: border-color .15s, background-color .15s; margin-bottom: 1rem; }
+    .drop:hover, .drop.over { border-color: var(--blue); background: var(--cyan-50); }
+    .drop b { font-family: var(--font-h); color: var(--navy-900); }
+    .drop small { font-size: .75rem; color: var(--muted); }
+    .drop .drop-icon { width: 42px; height: 42px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: var(--blue); box-shadow: 0 2px 8px rgba(10, 25, 47, .08); }
+    .gal-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: .6rem; font-size: .8125rem; color: var(--muted); }
+    .gal-item { display: grid; grid-template-columns: 28px 104px 1fr; gap: .7rem; align-items: start; padding: .7rem; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: .55rem; background: #fff; transition: box-shadow .2s, border-color .2s, opacity .2s; }
+    .gal-item.dragging { opacity: .4; }
+    .gal-item.drop-before { box-shadow: 0 -3px 0 0 var(--blue); }
+    .gal-item.drop-after { box-shadow: 0 3px 0 0 var(--blue); }
+    .gal-item.flash { border-color: var(--cyan); box-shadow: 0 0 0 4px var(--cyan-50); }
+    .gal-handle { display: flex; flex-direction: column; align-items: center; gap: .1rem; color: var(--muted); }
+    .gal-handle .grip { cursor: grab; padding: .2rem; border-radius: 6px; }
+    .gal-handle .grip:hover { background: #f1f5f9; }
+    .gal-handle .num { font-size: .7rem; font-weight: 700; }
+    .gal-thumb { position: relative; width: 104px; height: 78px; border-radius: 8px; overflow: hidden; background: #e2e8f0; }
+    .gal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .gal-thumb .new { position: absolute; left: 4px; top: 4px; font-size: .62rem; font-weight: 700; background: var(--blue); color: #fff; border-radius: 4px; padding: 0 .3rem; }
+    .gal-fields { display: grid; gap: .45rem; min-width: 0; }
+    .gal-fields .input { padding: .42rem .6rem; font-size: .875rem; }
+    .gal-row { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; }
+    .gal-actions { display: flex; align-items: center; gap: .15rem; margin-top: .1rem; }
+    .gal-actions .spacer { flex: 1; }
+
+    /* Aperçu */
+    .preview { display: flex; flex-direction: column; min-height: 0; background: #e8edf3; }
+    .preview-bar { display: flex; align-items: center; gap: .5rem; padding: .55rem .9rem; border-bottom: 1px solid var(--line); background: #f8fafc; font-size: .8125rem; color: var(--muted); }
+    .preview-bar .seg { display: inline-flex; background: #e2e8f0; border-radius: 8px; padding: 3px; margin-left: auto; }
+    .preview-bar .seg button { height: 28px; padding: 0 .7rem; border-radius: 6px; font-size: .78rem; font-weight: 600; color: var(--text-2); }
+    .preview-bar .seg button[aria-pressed="true"] { background: #fff; color: var(--navy-900); box-shadow: 0 1px 3px rgba(0, 0, 0, .1); }
+    .preview-stage { flex: 1; display: flex; justify-content: center; overflow: auto; padding: 0; min-height: 0; }
+    .preview-stage iframe { width: 100%; height: 100%; border: 0; background: #fff; transition: width .25s; }
+    .preview-stage.mobile { padding: 1rem 0; }
+    .preview-stage.mobile iframe { width: 390px; border-radius: 22px; box-shadow: 0 0 0 10px #0f172a, var(--shadow); }
+
+    /* Illustration : repère visuel de la zone modifiée */
+    .illus { position: sticky; top: -1rem; z-index: 3; background: #fff; margin: 0 -.9rem; padding: .75rem .9rem .6rem; border-bottom: 1px solid var(--line); }
+    .illus.expanded { position: static; }
+    .illus-view { position: relative; height: 190px; overflow: hidden; border-radius: 10px; background: #f1f5f9; box-shadow: inset 0 0 0 1px var(--line); cursor: zoom-in; }
+    .illus.expanded .illus-view { cursor: zoom-out; }
+    .illus-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; transition: transform .45s cubic-bezier(.16, 1, .3, 1); }
+    .illus-canvas img { width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
+    .illus-canvas::after { content: ''; position: absolute; inset: 0; background: rgba(10, 25, 47, 0); transition: background-color .3s; pointer-events: none; }
+    .illus.has-active .illus-canvas::after { background: rgba(10, 25, 47, .32); }
+    .zone { position: absolute; border-radius: 4px; cursor: pointer; z-index: 1; transition: box-shadow .2s, background-color .2s; }
+    .zone:hover { box-shadow: 0 0 0 1.5px rgba(0, 210, 255, .9); background: rgba(0, 210, 255, .12); }
+    .zone.active { z-index: 2; box-shadow: 0 0 0 2px var(--cyan), 0 0 0 0 rgba(0, 210, 255, 0); background: rgba(0, 210, 255, .14); animation: zonePulse 1.8s ease-in-out infinite; }
+    .illus.has-active .zone.active { backdrop-filter: brightness(1.45); -webkit-backdrop-filter: brightness(1.45); }
+    @keyframes zonePulse { 50% { box-shadow: 0 0 0 2px var(--cyan), 0 0 14px 4px rgba(0, 210, 255, .55); } }
+    .illus-cap { display: flex; align-items: center; gap: .45rem; margin-top: .45rem; font-size: .75rem; color: var(--muted); min-height: 22px; }
+    .illus-cap .pin { flex: 0 0 auto; width: 18px; height: 18px; border-radius: 50%; background: var(--cyan-50); color: var(--blue); display: grid; place-items: center; }
+    .illus-cap b { color: var(--navy-900); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .illus-cap button { margin-left: auto; flex: 0 0 auto; font-size: .75rem; font-weight: 600; color: var(--blue); padding: .1rem .3rem; border-radius: 5px; }
+    .illus-cap button:hover { background: var(--cyan-50); }
+    .img-card .illus { position: static; grid-column: 1 / -1; margin: .2rem 0 0; padding: 0; border: 0; }
+    .img-card .illus-view { height: 120px; }
+
+    /* Barre mobile */
+    .mobile-switch { display: none; }
+
+    /* Toasts */
+    .toasts { position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%); display: grid; gap: .5rem; z-index: 100; width: min(92vw, 440px); pointer-events: none; }
+    .toast { pointer-events: auto; display: flex; gap: .6rem; align-items: flex-start; background: var(--navy-900); color: #fff; padding: .75rem .95rem; border-radius: 11px; box-shadow: 0 15px 35px -10px rgba(0, 0, 0, .45); font-size: .875rem; animation: toastIn .25s ease; }
+    .toast.ok { background: #065f46; }
+    .toast.err { background: #991b1b; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(8px); } }
+
+    /* Fenêtre de publication */
+    .overlay { position: fixed; inset: 0; background: rgba(5, 13, 24, .55); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 50; padding: 1rem; }
+    .dialog { width: 100%; max-width: 440px; background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .5); }
+    .dialog h3 { font-family: var(--font-h); font-size: 1.1rem; color: var(--navy-900); margin-bottom: .4rem; }
+    .dialog p { color: var(--text-2); font-size: .9rem; }
+    .dialog ul { margin: .75rem 0 0 1.1rem; color: var(--text-2); font-size: .875rem; }
+    .dialog .actions { display: flex; justify-content: flex-end; gap: .5rem; margin-top: 1.25rem; }
+    .steps { display: grid; gap: .55rem; margin-top: 1rem; }
+    .step { display: flex; align-items: center; gap: .6rem; font-size: .875rem; color: var(--muted); }
+    .step i { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line-strong); flex: 0 0 auto; display: grid; place-items: center; font-style: normal; font-size: .7rem; }
+    .step.active { color: var(--navy-900); font-weight: 600; }
+    .step.active i { border-color: var(--blue); border-top-color: transparent; animation: spin .8s linear infinite; }
+    .step.done { color: var(--ok); }
+    .step.done i { border-color: var(--ok); background: var(--ok); color: #fff; }
+    .step.done i::after { content: '✓'; }
+    .step.fail { color: var(--danger); }
+    .step.fail i { border-color: var(--danger); background: var(--danger); color: #fff; }
+    .step.fail i::after { content: '!'; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .bar { height: 6px; background: #e2e8f0; border-radius: 9px; overflow: hidden; margin-top: 1rem; }
+    .bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--cyan)); transition: width .3s; }
+
+    .loading { height: 100%; display: grid; place-items: center; color: var(--muted); }
+    .spinner { width: 28px; height: 28px; border: 3px solid var(--line); border-top-color: var(--blue); border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto .75rem; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .workspace { grid-template-columns: 1fr; }
+      .editor, .preview { grid-area: 1 / 1; }
+      .app[data-view="edit"] .preview { visibility: hidden; }
+      .app[data-view="preview"] .editor { visibility: hidden; }
+      .preview-bar .seg { display: none; }
+      .mobile-switch { display: flex; position: fixed; left: 50%; transform: translateX(-50%); bottom: 1rem; z-index: 30; background: var(--navy-900); border-radius: 999px; padding: 4px; box-shadow: 0 12px 30px -8px rgba(0, 0, 0, .45); }
+      .mobile-switch button { height: 40px; padding: 0 1.15rem; border-radius: 999px; color: #cbd5e1; font-family: var(--font-h); font-weight: 700; font-size: .875rem; }
+      .mobile-switch button[aria-pressed="true"] { background: #fff; color: var(--navy-900); }
+      .toasts { bottom: 4.75rem; }
+      .tb-label { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .topbar { gap: .4rem; padding: 0 .6rem; }
+      .tb-brand small, .topbar .status-text { display: none; }
+      .status { padding: 0 .55rem; }
+      #btnViewSite { display: none; }
+      .img-card { grid-template-columns: 92px 1fr; }
+      .img-thumb { width: 92px; height: 72px; }
+      .gal-item { grid-template-columns: 22px 80px 1fr; gap: .55rem; }
+      .gal-thumb { width: 80px; height: 64px; }
+      .gal-row { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .login-card { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================= ÉCRAN DE CONNEXION ======================= -->
+  <main class="login" id="loginView" hidden>
+    <form class="login-card" id="loginForm" autocomplete="off">
+      <div class="login-brand">
+        <img src="../assets/images/logo_lpelia.png" alt="">
+        <div>
+          <h1>Espace administration</h1>
+          <p>Site vitrine LPELIA · Treichville</p>
+        </div>
+      </div>
+      <p class="login-intro">Connectez-vous avec votre jeton GitHub pour modifier les textes, les images et la galerie, puis publier les changements en ligne.</p>
+
+      <div class="login-error" id="loginError" hidden></div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="label" for="ghOwner">Compte GitHub</label>
+          <input class="input" id="ghOwner" required placeholder="ex : mosa-corp" spellcheck="false">
+        </div>
+        <div class="form-row">
+          <label class="label" for="ghRepo">Dépôt</label>
+          <input class="input" id="ghRepo" required placeholder="Lpelia" spellcheck="false">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="label" for="ghToken">Jeton d’accès (token)</label>
+        <input class="input" id="ghToken" type="password" required placeholder="github_pat_…" spellcheck="false" autocomplete="current-password">
+      </div>
+      <details class="more-settings">
+        <summary>Réglages avancés</summary>
+        <div class="form-grid">
+          <div class="form-row">
+            <label class="label" for="ghBranch">Branche</label>
+            <input class="input" id="ghBranch" placeholder="main" spellcheck="false">
+          </div>
+          <div class="form-row">
+            <label class="label" for="ghDir">Dossier du site</label>
+            <input class="input" id="ghDir" placeholder="(racine du dépôt)" spellcheck="false">
+          </div>
+        </div>
+      </details>
+      <label class="check"><input type="checkbox" id="ghRemember" checked> Rester connecté sur cet appareil</label>
+      <button class="btn btn-primary" type="submit" id="loginBtn">Se connecter</button>
+      <button class="login-alt" type="button" id="offlineBtn">Continuer sans GitHub (export manuel du fichier)</button>
+
+      <details class="help">
+        <summary>Comment obtenir un jeton GitHub ?</summary>
+        <ol>
+          <li>Sur GitHub : <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens</b> (<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">lien direct</a>).</li>
+          <li><b>Repository access</b> : « Only select repositories » → choisissez le dépôt du site.</li>
+          <li><b>Permissions → Contents</b> : <code>Read and write</code>.</li>
+          <li>Générez, copiez le jeton et collez-le ici. Il reste uniquement sur cet appareil.</li>
+        </ol>
+      </details>
+    </form>
+  </main>
+
+  <!-- ======================= CHARGEMENT ======================= -->
+  <div class="loading" id="loadingView">
+    <div><div class="spinner"></div>Chargement de l’espace admin…</div>
+  </div>
+
+  <!-- ======================= APPLICATION ======================= -->
+  <div class="app" id="appView" data-view="edit" hidden>
+    <header class="topbar">
+      <div class="tb-brand">
+        <img src="../assets/images/logo_lpelia.png" alt="">
+        <div style="min-width:0">
+          <b>Admin LPELIA</b>
+          <small id="repoLabel"></small>
+        </div>
+      </div>
+      <span class="status" id="status" data-state="idle"><span class="status-text" id="statusText">À jour</span></span>
+      <a class="btn btn-ghost btn-sm" id="btnViewSite" href="../" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" /></svg>
+        <span class="tb-label">Voir le site</span>
+      </a>
+      <button class="btn btn-primary btn-sm" id="btnPublish" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+        <span id="btnPublishLabel">Publier</span>
+      </button>
+      <div class="menu-wrap">
+        <button class="icon-btn" id="btnMenu" aria-label="Plus d’options" aria-haspopup="true" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="19" r="2" /></svg>
+        </button>
+        <div class="menu" id="menu" hidden>
+          <div class="menu-info" id="menuInfo"></div>
+          <button type="button" id="mDiscard">↺ Annuler toutes les modifications non publiées</button>
+          <button type="button" id="mExport">⤓ Télécharger content.json</button>
+          <button type="button" id="mImport">⤒ Importer un fichier content.json</button>
+          <button type="button" id="mReload">⟳ Recharger le contenu en ligne</button>
+          <hr>
+          <button type="button" id="mLogout" class="btn-danger">Se déconnecter</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <!-- Éditeur -->
+      <section class="editor" aria-label="Éditeur">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-tab="texts">Textes <span class="count" id="cTexts"></span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="images">Images <span class="count" id="cImages"></span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="gallery">Galerie <span class="count" id="cGallery"></span></button>
+        </div>
+
+        <div class="panel" id="panelTexts" role="tabpanel">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
+            <input class="input" id="searchTexts" type="search" placeholder="Rechercher un texte…" aria-label="Rechercher un texte">
+          </div>
+          <div id="textGroups"></div>
+          <p class="hint" style="margin-top:1rem">Astuce : cliquez directement sur un texte dans l’aperçu pour le modifier. Dans les titres, écrivez <b>*mot*</b> pour le mettre en couleur.</p>
+        </div>
+
+        <div class="panel" id="panelImages" role="tabpanel" hidden>
+          <div id="imageList"></div>
+        </div>
+
+        <div class="panel" id="panelGallery" role="tabpanel" hidden>
+          <label class="drop" id="dropZone">
+            <span class="drop-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg></span>
+            <b>Ajouter des photos</b>
+            <small>Cliquez ou glissez vos images ici · JPG, PNG, WEBP · redimensionnées automatiquement</small>
+            <input type="file" id="galleryInput" accept="image/*" multiple class="sr-only">
+          </label>
+          <div class="gal-toolbar"><span id="galCount"></span><span>Glissez ⋮⋮ pour réordonner</span></div>
+          <div id="galleryList"></div>
+          <datalist id="catList"></datalist>
+        </div>
+      </section>
+
+      <!-- Aperçu en direct -->
+      <section class="preview" aria-label="Aperçu en direct">
+        <div class="preview-bar">
+          <span>Aperçu en direct — cliquez sur un élément pour le modifier</span>
+          <div class="seg" role="group" aria-label="Taille de l’aperçu">
+            <button type="button" data-device="desktop" aria-pressed="true">Ordinateur</button>
+            <button type="button" data-device="mobile" aria-pressed="false">Mobile</button>
+          </div>
+        </div>
+        <div class="preview-stage" id="previewStage">
+          <iframe id="previewFrame" title="Aperçu du site"></iframe>
+        </div>
+      </section>
+    </div>
+
+    <nav class="mobile-switch" aria-label="Affichage">
+      <button type="button" data-view="edit" aria-pressed="true">Modifier</button>
+      <button type="button" data-view="preview" aria-pressed="false">Aperçu</button>
+    </nav>
+  </div>
+
+  <input type="file" id="singleImageInput" accept="image/*" class="sr-only">
+  <input type="file" id="importInput" accept="application/json,.json" class="sr-only">
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div id="dialogHost"></div>
+
+  <script>
+    'use strict';
+    /* =====================================================================
+       ESPACE ADMIN LPELIA
+       - lit les zones modifiables directement dans ../index.html (data-edit…)
+       - enregistre le brouillon sur l'appareil (IndexedDB) automatiquement
+       - publie content.json + nouvelles images en UN commit GitHub
+         → GitHub Pages / Netlify / Vercel redéploient le site automatiquement
+       ===================================================================== */
+
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const clone = (o) => JSON.parse(JSON.stringify(o));
+    const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+    const ICON = {
+      up: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>',
+      down: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+      trash: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>',
+      grip: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>',
+      chev: '<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+      swap: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>'
+    };
+
+    /* ---------- Stockage local (brouillon + images non publiées) ---------- */
+    const idb = {
+      _db: null,
+      open() {
+        if (this._db) return Promise.resolve(this._db);
+        return new Promise((res, rej) => {
+          const r = indexedDB.open('lpelia-admin', 1);
+          r.onupgradeneeded = () => r.result.createObjectStore('kv');
+          r.onsuccess = () => res((this._db = r.result));
+          r.onerror = () => rej(r.error);
+        });
+      },
+      async get(k) { try { const db = await this.open(); return await new Promise((res) => { const q = db.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(undefined); }); } catch { return undefined; } },
+      async set(k, v) { try { const db = await this.open(); await new Promise((res) => { const t = db.transaction('kv', 'readwrite'); t.objectStore('kv').put(v, k); t.oncomplete = res; t.onerror = res; }); } catch { } },
+      async del(k) { try { const db = await this.open(); await new Promise((res) => { const t = db.transaction('kv', 'readwrite'); t.objectStore('kv').delete(k); t.oncomplete = res; t.onerror = res; }); } catch { } }
+    };
+    const store = {
+      get(k) { try { return JSON.parse(localStorage.getItem(k) || sessionStorage.getItem(k) || 'null'); } catch { return null; } },
+      set(k, v, persist) { try { (persist ? localStorage : sessionStorage).setItem(k, JSON.stringify(v)); (persist ? sessionStorage : localStorage).removeItem(k); } catch { } },
+      del(k) { try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch { } }
+    };
+
+    /* ---------- État ---------- */
+    const S = {
+      auth: null,          // { owner, repo, branch, dir, token } ou { offline: true }
+      fields: [],          // zones de texte lues dans index.html
+      imgFields: [],       // images modifiables
+      defaults: { texts: {}, images: {}, gallery: [] },
+      base: null,          // contenu publié (content.json)
+      draft: null,         // contenu en cours d'édition { texts, images, gallery }
+      pending: {},         // chemin → dataURL des nouvelles images à envoyer
+      cache: {},           // chemin → dataURL déjà publiées (affichage en attendant le déploiement)
+      tab: 'texts',
+      previewReady: false
+    };
+
+    /* ---------- Toasts ---------- */
+    function toast(msg, type = '', ms = 4200) {
+      const el = document.createElement('div');
+      el.className = 'toast ' + type;
+      el.textContent = msg;
+      $('#toasts').appendChild(el);
+      setTimeout(() => el.remove(), ms);
+    }
+
+    /* =====================================================================
+       GITHUB
+       ===================================================================== */
+    const GH = {
+      base() { return `https://api.github.com/repos/${encodeURIComponent(S.auth.owner)}/${encodeURIComponent(S.auth.repo)}`; },
+      async req(path, opts = {}) {
+        const res = await fetch(path.startsWith('http') ? path : this.base() + path, {
+          ...opts,
+          headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: 'Bearer ' + S.auth.token,
+            'X-GitHub-Api-Version': '2022-11-28',
+            ...(opts.body ? { 'Content-Type': 'application/json' } : {})
+          }
+        });
+        if (!res.ok) {
+          let detail = '';
+          try { detail = (await res.json()).message || ''; } catch { }
+          const err = new Error(GH.explain(res.status, detail));
+          err.status = res.status;
+          throw err;
+        }
+        return res.status === 204 ? null : res.json();
+      },
+      explain(status, detail) {
+        if (status === 401) return 'Jeton invalide ou expiré. Reconnectez-vous avec un nouveau jeton.';
+        if (status === 403) return 'Accès refusé : le jeton doit avoir la permission « Contents : Read and write » sur ce dépôt.' + (detail ? ` (${detail})` : '');
+        if (status === 404) return 'Dépôt, branche ou fichier introuvable. Vérifiez le compte, le nom du dépôt et que le jeton y a accès.';
+        if (status === 409 || status === 422) return 'Conflit avec une autre mise à jour. Réessayez.' + (detail ? ` (${detail})` : '');
+        return `Erreur GitHub ${status}${detail ? ' : ' + detail : ''}`;
+      },
+      path(p) { return (S.auth.dir ? S.auth.dir.replace(/^\/+|\/+$/g, '') + '/' : '') + p; },
+      async checkRepo() {
+        const repo = await this.req('');
+        if (repo.permissions && repo.permissions.push === false) throw new Error('Ce compte n’a pas le droit de modifier ce dépôt.');
+        if (!S.auth.branch) S.auth.branch = repo.default_branch || 'main';
+        return repo;
+      },
+      async readContent() {
+        try {
+          const f = await this.req(`/contents/${this.path('content.json').split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(S.auth.branch)}`);
+          const bin = atob(f.content.replace(/\n/g, ''));
+          const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+          return JSON.parse(new TextDecoder().decode(bytes));
+        } catch (e) {
+          if (e.status === 404) return null;
+          throw e;
+        }
+      },
+      /** Un seul commit avec tous les fichiers → un seul redéploiement */
+      async commit(files, message, onStep) {
+        const br = encodeURIComponent(S.auth.branch);
+        for (let attempt = 0; attempt < 2; attempt++) {
+          onStep('prepare');
+          const ref = await this.req(`/git/ref/heads/${br}`);
+          const head = await this.req(`/git/commits/${ref.object.sha}`);
+          const tree = [];
+          let i = 0;
+          for (const f of files) {
+            onStep('upload', ++i, files.length);
+            const blob = await this.req('/git/blobs', {
+              method: 'POST',
+              body: JSON.stringify(f.base64 ? { content: f.base64, encoding: 'base64' } : { content: f.text, encoding: 'utf-8' })
+            });
+            tree.push({ path: this.path(f.path), mode: '100644', type: 'blob', sha: blob.sha });
+          }
+          onStep('commit');
+          const newTree = await this.req('/git/trees', { method: 'POST', body: JSON.stringify({ base_tree: head.tree.sha, tree }) });
+          const c = await this.req('/git/commits', { method: 'POST', body: JSON.stringify({ message, tree: newTree.sha, parents: [ref.object.sha] }) });
+          try {
+            await this.req(`/git/refs/heads/${br}`, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) });
+            return c;
+          } catch (e) {
+            if ((e.status === 422 || e.status === 409) && attempt === 0) continue; // quelqu'un a publié entre-temps : on recommence
+            throw e;
+          }
+        }
+      }
+    };
+
+    /* =====================================================================
+       LECTURE DU SITE (zones modifiables)
+       ===================================================================== */
+    function extractText(el) {
+      if (el.dataset.editType === 'number') return el.dataset.target || el.textContent.trim();
+      const hl = el.dataset.hl || 'highlight';
+      const c = el.cloneNode(true);
+      c.querySelectorAll('br').forEach((b) => b.replaceWith('\u0001'));
+      c.querySelectorAll('.' + hl).forEach((s) => s.replaceWith('*' + s.textContent.trim() + '*'));
+      return c.textContent.replace(/\s+/g, ' ').replace(/\s*\u0001\s*/g, '\n').trim();
+    }
+
+    async function readSite() {
+      const res = await fetch('../index.html?t=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Impossible de lire index.html');
+      const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+      const seen = new Set();
+      S.fields = [];
+      doc.querySelectorAll('[data-edit]').forEach((el) => {
+        const key = el.dataset.edit;
+        if (seen.has(key)) return;
+        seen.add(key);
+        const value = extractText(el);
+        S.fields.push({
+          key, value,
+          label: el.dataset.label || key,
+          hint: el.dataset.hint || '',
+          type: el.dataset.editType || (el.dataset.editHref ? el.dataset.editHref : 'text'),
+          group: el.closest('[data-cms-group]')?.dataset.cmsGroup || 'Autres'
+        });
+        S.defaults.texts[key] = value;
+      });
+      S.imgFields = [];
+      doc.querySelectorAll('[data-edit-img]').forEach((el) => {
+        const key = el.dataset.editImg;
+        if (S.defaults.images[key]) return;
+        const v = { src: el.getAttribute('src'), alt: el.getAttribute('alt') || '' };
+        S.defaults.images[key] = v;
+        S.imgFields.push({ key, label: el.dataset.label || key, group: el.closest('[data-cms-group]')?.dataset.cmsGroup || 'Autres', wide: key === 'hero.image' });
+      });
+      S.defaults.gallery = [...doc.querySelectorAll('#galleryGrid .gallery-item')].map((fig, i) => ({
+        id: 'g' + (i + 1),
+        src: fig.querySelector('img')?.getAttribute('src') || '',
+        alt: fig.querySelector('img')?.getAttribute('alt') || '',
+        title: fig.querySelector('.gallery-caption-title')?.textContent.trim() || '',
+        category: fig.dataset.category || ''
+      }));
+    }
+
+    async function readPublished() {
+      if (!S.auth.offline) return await GH.readContent();
+      try {
+        const r = await fetch('../content.json?t=' + Date.now(), { cache: 'no-store' });
+        return r.ok ? await r.json() : null;
+      } catch { return null; }
+    }
+
+    function normalize(c) {
+      c = c || {};
+      return {
+        texts: { ...(c.texts || {}) },
+        images: clone(c.images || {}),
+        gallery: Array.isArray(c.gallery) ? clone(c.gallery) : clone(S.defaults.gallery)
+      };
+    }
+
+    /* Valeurs effectives (défaut du HTML + modifications) */
+    const textOf = (c, k) => (c.texts[k] ?? S.defaults.texts[k] ?? '');
+    const imgOf = (c, k) => ({ ...(S.defaults.images[k] || {}), ...(c.images[k] || {}) });
+    const resolveSrc = (src) => {
+      if (!src) return '';
+      if (S.pending[src]) return S.pending[src];
+      if (S.cache[src]) return S.cache[src];
+      if (/^(data:|https?:|blob:)/.test(src)) return src;
+      return '../' + src;
+    };
+
+    /** Contenu à enregistrer : uniquement ce qui diffère du HTML d'origine */
+    function buildContent(c, extra = {}) {
+      const texts = {};
+      Object.keys(c.texts).forEach((k) => { if (c.texts[k] !== S.defaults.texts[k]) texts[k] = c.texts[k]; });
+      const images = {};
+      Object.keys(c.images).forEach((k) => {
+        const d = S.defaults.images[k] || {};
+        const v = imgOf(c, k);
+        if (v.src !== d.src || v.alt !== d.alt) images[k] = { src: v.src, alt: v.alt };
+      });
+      return { version: 1, updatedAt: null, ...extra, texts, images, gallery: c.gallery.map(({ id, src, alt, title, category }) => ({ id, src, alt: alt || '', title: title || '', category: category || '' })) };
+    }
+
+    const signature = (c) => JSON.stringify({ ...buildContent(c), updatedAt: null });
+    const isDirty = () => S.base && S.draft && signature(S.draft) !== signature(S.base);
+    const changesCount = () => {
+      if (!isDirty()) return 0;
+      const a = buildContent(S.draft), b = buildContent(S.base);
+      let n = 0;
+      new Set([...Object.keys(a.texts), ...Object.keys(b.texts)]).forEach((k) => { if (a.texts[k] !== b.texts[k]) n++; });
+      new Set([...Object.keys(a.images), ...Object.keys(b.images)]).forEach((k) => { if (JSON.stringify(a.images[k]) !== JSON.stringify(b.images[k])) n++; });
+      if (JSON.stringify(a.gallery) !== JSON.stringify(b.gallery)) n++;
+      return n;
+    };
+
+    /* =====================================================================
+       STATUT, SAUVEGARDE DU BROUILLON, APERÇU
+       ===================================================================== */
+    let statusLock = false;
+    function setStatus(state, text) {
+      $('#status').dataset.state = state;
+      $('#statusText').textContent = text;
+    }
+    function refreshStatus() {
+      const dirty = isDirty();
+      $('#btnPublish').disabled = !dirty;
+      if (!statusLock) {
+        const n = changesCount();
+        if (dirty) setStatus('dirty', n > 1 ? `${n} modifications non publiées` : '1 modification non publiée');
+        else setStatus('idle', S.auth.offline ? 'Mode export manuel' : 'Tout est publié');
+      }
+      updateCounts();
+    }
+
+    const saveDraft = debounce(async () => {
+      if (isDirty()) await idb.set(draftKey(), { draft: S.draft, pending: S.pending, baseUpdatedAt: S.base.updatedAt || null, savedAt: Date.now() });
+      else await idb.del(draftKey());
+    }, 400);
+    const draftKey = () => 'draft:' + (S.auth.offline ? 'offline' : `${S.auth.owner}/${S.auth.repo}`.toLowerCase());
+
+    function previewContent() {
+      const texts = {};
+      S.fields.forEach((f) => { texts[f.key] = textOf(S.draft, f.key); });
+      const images = {};
+      S.imgFields.forEach((f) => { images[f.key] = imgOf(S.draft, f.key); });
+      return { texts, images, gallery: S.draft.gallery };
+    }
+    function pushPreview() {
+      const win = $('#previewFrame').contentWindow;
+      if (!win || !S.previewReady) return;
+      win.postMessage({ type: 'lpcms:draft', content: previewContent(), pending: { ...S.cache, ...S.pending } }, location.origin === 'null' ? '*' : location.origin);
+    }
+    const pushPreviewSoon = debounce(pushPreview, 180);
+
+    function changed() {
+      refreshStatus();
+      saveDraft();
+      pushPreviewSoon();
+    }
+
+    function scrollPreviewTo(key) {
+      const win = $('#previewFrame').contentWindow;
+      if (win && S.previewReady) win.postMessage({ type: 'lpcms:scrollTo', key }, location.origin === 'null' ? '*' : location.origin);
+    }
+
+    window.addEventListener('message', (e) => {
+      if (e.source !== $('#previewFrame').contentWindow) return;
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.type === 'lpcms:ready') { S.previewReady = true; pushPreview(); }
+      if (e.data.type === 'lpcms:focus') focusField(e.data.key);
+    });
+
+    /* =====================================================================
+       ONGLET TEXTES
+       ===================================================================== */
+    function autosize(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 2 + 'px'; }
+
+    function renderTexts() {
+      const q = $('#searchTexts').value.trim().toLowerCase();
+      const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      const nq = norm(q);
+      const groups = new Map();
+      S.fields.forEach((f) => {
+        const val = textOf(S.draft, f.key);
+        if (nq && !norm(f.label + ' ' + f.group + ' ' + val).includes(nq)) return;
+        if (!groups.has(f.group)) groups.set(f.group, []);
+        groups.get(f.group).push(f);
+      });
+      const openGroups = new Set($$('#textGroups details[open]').map((d) => d.dataset.group));
+      const first = !$('#textGroups').children.length;
+      $('#textGroups').innerHTML = groups.size ? [...groups].map(([g, fields], gi) => {
+        const dirty = fields.some((f) => textOf(S.draft, f.key) !== textOf(S.base, f.key));
+        const open = nq || openGroups.has(g) || (first && gi < 2);
+        return `<details class="group" data-group="${esc(g)}"${open ? ' open' : ''}>
+          <summary>${esc(g)} ${dirty ? '<span class="dot" title="Modifié"></span>' : ''}<span class="count" style="font-family:var(--font-b);font-size:.72rem;color:var(--muted);font-weight:500">${fields.length}</span>${ICON.chev}</summary>
+          <div class="group-body">${illusHTML(g)}${fields.map(fieldHTML).join('')}</div>
+        </details>`;
+      }).join('') : '<p class="empty-search">Aucun texte ne correspond à votre recherche.</p>';
+      $$('#textGroups textarea').forEach(autosize);
+      $$('#textGroups .illus').forEach((el) => Illus.update(el));
+    }
+
+    /* =====================================================================
+       ILLUSTRATIONS : montrent où se trouve, sur le site, la zone modifiée
+       (images dans admin/illustrations/, coordonnées dans map.json)
+       ===================================================================== */
+    const fieldLabel = (key) => (S.fields.find((f) => f.key === key) || S.imgFields.find((f) => f.key === key) || {}).label || '';
+
+    function illusHTML(group, fixedKey) {
+      const g = S.map && S.map.groups[group];
+      if (!g) return '';
+      const zones = Object.entries(g.zones)
+        .filter(([k, z]) => z[2] > 0.2 && z[3] > 0.1 && !k.startsWith('gallery:'))
+        .map(([k, z]) => `<span class="zone" data-zone="${esc(k)}" title="${esc(fieldLabel(k))}" style="left:${z[0]}%;top:${z[1]}%;width:${z[2]}%;height:${z[3]}%"></span>`).join('');
+      return `<div class="illus" data-group="${esc(group)}"${fixedKey ? ` data-fixed="${esc(fixedKey)}"` : ''}>
+        <div class="illus-view" title="Cliquer pour voir toute la section">
+          <div class="illus-canvas" data-ratio="${g.ratio}"><img src="${esc(g.img)}" alt="Illustration de la section « ${esc(group)} »" loading="lazy">${zones}</div>
+        </div>
+        ${fixedKey ? '<div class="illus-cap"><span class="pin"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span>Emplacement de cette image sur le site · cliquez pour agrandir</div>' : `<div class="illus-cap"><span class="pin"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span><span class="cap-text">Cliquez sur un champ : sa place sur le site s’allume ici.</span><button type="button" data-illus-toggle>Toute la section</button></div>`}
+      </div>`;
+    }
+
+    const Illus = {
+      active: {}, // groupe → clé active
+      update(el) {
+        const view = $('.illus-view', el), canvas = $('.illus-canvas', el);
+        const W = view.clientWidth;
+        if (!W) return;
+        const H = W * parseFloat(canvas.dataset.ratio);
+        const expanded = el.classList.contains('expanded');
+        const vh = expanded ? H : Math.min(el.dataset.fixed ? 120 : 190, H);
+        view.style.height = vh + 'px';
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        const key = el.dataset.fixed || this.active[el.dataset.group];
+        const z = key && S.map.groups[el.dataset.group].zones[key];
+        $$('.zone', el).forEach((n) => n.classList.toggle('active', n.dataset.zone === key));
+        el.classList.toggle('has-active', !!z);
+        let s = 1, tx = 0, ty = 0;
+        if (z && !expanded) {
+          const zw = z[2] / 100 * W, zh = z[3] / 100 * H;
+          // zoom pour que la zone soit lisible, sans dépasser la fenêtre
+          s = Math.max(1, Math.min(2.4, (W * 0.8) / zw, (vh * 0.7) / zh));
+          const cx = (z[0] / 100 * W + zw / 2) * s, cy = (z[1] / 100 * H + zh / 2) * s;
+          tx = Math.min(0, Math.max(W - W * s, W / 2 - cx));
+          ty = Math.min(0, Math.max(vh - H * s, vh / 2 - cy));
+        }
+        canvas.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+        const cap = $('.cap-text', el);
+        if (cap) cap.innerHTML = z ? `Vous modifiez : <b>${esc(fieldLabel(key))}</b>` : 'Cliquez sur un champ : sa place sur le site s’allume ici.';
+        const btn = $('[data-illus-toggle]', el);
+        if (btn) btn.textContent = expanded ? 'Réduire' : 'Toute la section';
+      },
+      focus(key) {
+        const f = S.fields.find((x) => x.key === key);
+        if (!f) return;
+        this.active[f.group] = key;
+        const el = $(`#textGroups .illus[data-group="${CSS.escape(f.group)}"]`);
+        if (el) this.update(el);
+      }
+    };
+
+    // Cliquer sur l'illustration : agrandir / réduire, ou choisir une zone
+    document.addEventListener('click', (e) => {
+      const ill = e.target.closest('.illus');
+      if (!ill) return;
+      const zone = e.target.closest('.zone');
+      if (zone && !ill.dataset.fixed && !ill.classList.contains('expanded')) return focusField(zone.dataset.zone);
+      if (zone && ill.classList.contains('expanded')) { ill.classList.remove('expanded'); return focusField(zone.dataset.zone); }
+      if (e.target.closest('.illus-view, [data-illus-toggle]')) { ill.classList.toggle('expanded'); Illus.update(ill); }
+    });
+    window.addEventListener('resize', debounce(() => $$('.illus').forEach((el) => Illus.update(el)), 150));
+
+    function fieldHTML(f) {
+      const val = textOf(S.draft, f.key);
+      const mod = val !== textOf(S.base, f.key);
+      const id = 'f_' + f.key.replace(/[^\w]/g, '_');
+      const input = f.type === 'number'
+        ? `<input class="input" id="${id}" data-key="${esc(f.key)}" inputmode="numeric" value="${esc(val)}">`
+        : f.type === 'tel' || f.type === 'mailto'
+          ? `<input class="input" id="${id}" data-key="${esc(f.key)}" type="${f.type === 'tel' ? 'tel' : 'email'}" value="${esc(val)}">`
+          : `<textarea class="textarea" id="${id}" data-key="${esc(f.key)}" rows="1">${esc(val)}</textarea>`;
+      return `<div class="field" data-field="${esc(f.key)}">
+        <div class="field-head"><label class="label" for="${id}">${esc(f.label)}</label>${mod ? '<span class="badge-mod">modifié</span><button type="button" class="field-reset" data-reset="' + esc(f.key) + '">Rétablir</button>' : ''}</div>
+        ${input}
+        ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ''}
+      </div>`;
+    }
+
+    function refreshFieldHead(key) {
+      const box = $(`.field[data-field="${CSS.escape(key)}"]`);
+      if (!box) return;
+      const head = $('.field-head', box);
+      const mod = textOf(S.draft, key) !== textOf(S.base, key);
+      $$('.badge-mod, .field-reset', head).forEach((n) => n.remove());
+      if (mod) head.insertAdjacentHTML('beforeend', `<span class="badge-mod">modifié</span><button type="button" class="field-reset" data-reset="${esc(key)}">Rétablir</button>`);
+      const group = box.closest('details');
+      if (group) {
+        const fields = $$('.field', group).map((n) => n.dataset.field);
+        const dirty = fields.some((k) => textOf(S.draft, k) !== textOf(S.base, k));
+        const sum = $('summary', group);
+        const dot = $('.dot', sum);
+        if (dirty && !dot) $('.count', sum).insertAdjacentHTML('beforebegin', '<span class="dot" title="Modifié"></span>');
+        if (!dirty && dot) dot.remove();
+      }
+    }
+
+    $('#textGroups').addEventListener('input', (e) => {
+      const key = e.target.dataset.key;
+      if (!key) return;
+      S.draft.texts[key] = e.target.value;
+      if (e.target.tagName === 'TEXTAREA') autosize(e.target);
+      refreshFieldHead(key);
+      changed();
+    });
+    $('#textGroups').addEventListener('focusin', (e) => { if (e.target.dataset.key) { scrollPreviewTo(e.target.dataset.key); Illus.focus(e.target.dataset.key); } });
+    $('#textGroups').addEventListener('click', (e) => {
+      const k = e.target.dataset.reset;
+      if (!k) return;
+      if (k in S.base.texts) S.draft.texts[k] = S.base.texts[k]; else delete S.draft.texts[k];
+      const inp = $(`[data-key="${CSS.escape(k)}"]`);
+      if (inp) { inp.value = textOf(S.draft, k); if (inp.tagName === 'TEXTAREA') autosize(inp); }
+      refreshFieldHead(k);
+      changed();
+    });
+    $('#textGroups').addEventListener('toggle', (e) => { if (e.target.open) { $$('textarea', e.target).forEach(autosize); $$('.illus', e.target).forEach((el) => Illus.update(el)); } }, true);
+    $('#searchTexts').addEventListener('input', debounce(renderTexts, 120));
+
+    /* =====================================================================
+       IMAGES : compression & envoi
+       ===================================================================== */
+    const slug = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\.[a-z0-9]+$/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'image';
+    const stamp = () => { const d = new Date(), p = (n) => String(n).padStart(2, '0'); return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`; };
+
+    async function compressImage(file, max = 1600, quality = 0.82) {
+      if (!file.type.startsWith('image/')) throw new Error(`« ${file.name} » n’est pas une image.`);
+      const url = URL.createObjectURL(file);
+      try {
+        const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error(`Format non pris en charge pour « ${file.name} » (utilisez JPG, PNG ou WEBP).`)); i.src = url; });
+        const s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+        const w = Math.round(img.naturalWidth * s), h = Math.round(img.naturalHeight * s);
+        const c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        return c.toDataURL('image/jpeg', quality);
+      } finally { URL.revokeObjectURL(url); }
+    }
+
+    let seq = 0;
+    async function addImageFile(file, max) {
+      const dataURL = await compressImage(file, max);
+      const path = `assets/images/uploads/${stamp()}-${++seq}-${slug(file.name)}.jpg`;
+      S.pending[path] = dataURL;
+      return path;
+    }
+
+    /* =====================================================================
+       ONGLET IMAGES
+       ===================================================================== */
+    function renderImages() {
+      $('#imageList').innerHTML = S.imgFields.map((f) => {
+        const v = imgOf(S.draft, f.key);
+        const mod = JSON.stringify(imgOf(S.draft, f.key)) !== JSON.stringify(imgOf(S.base, f.key));
+        const isDefault = v.src === S.defaults.images[f.key]?.src;
+        return `<div class="img-card field" data-field="${esc(f.key)}">
+          <img class="img-thumb" src="${esc(resolveSrc(v.src))}" alt="">
+          <div style="min-width:0">
+            <h4>${esc(f.label)} ${mod ? '<span class="badge-mod">modifié</span>' : ''}</h4>
+            <div class="meta">${esc(f.group)}</div>
+            <label class="sr-only" for="alt_${esc(f.key)}">Description de l’image</label>
+            <input class="input" style="padding:.4rem .6rem;font-size:.85rem" id="alt_${esc(f.key)}" data-alt="${esc(f.key)}" value="${esc(v.alt)}" placeholder="Description (pour l’accessibilité)">
+            <div class="img-actions">
+              <button type="button" class="btn btn-ghost btn-sm" data-replace="${esc(f.key)}">${ICON.swap} Remplacer</button>
+              ${mod ? `<button type="button" class="btn btn-quiet btn-sm" data-undo-img="${esc(f.key)}">Annuler</button>` : ''}
+              ${!isDefault ? `<button type="button" class="btn btn-quiet btn-sm" data-orig-img="${esc(f.key)}">Image d’origine</button>` : ''}
+            </div>
+          </div>
+          ${illusHTML(f.group, f.key)}
+        </div>`;
+      }).join('');
+      $$('#imageList .illus').forEach((el) => Illus.update(el));
+    }
+
+    let replaceTarget = null;
+    $('#imageList').addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.replace) { replaceTarget = { kind: 'img', key: b.dataset.replace }; $('#singleImageInput').click(); scrollPreviewTo(b.dataset.replace); }
+      if (b.dataset.undoImg) {
+        const k = b.dataset.undoImg;
+        if (S.base.images[k]) S.draft.images[k] = clone(S.base.images[k]); else delete S.draft.images[k];
+        renderImages(); changed();
+      }
+      if (b.dataset.origImg) {
+        const k = b.dataset.origImg;
+        S.draft.images[k] = clone(S.defaults.images[k]);
+        renderImages(); changed();
+      }
+    });
+    $('#imageList').addEventListener('input', (e) => {
+      const k = e.target.dataset.alt;
+      if (!k) return;
+      S.draft.images[k] = { ...imgOf(S.draft, k), alt: e.target.value };
+      changed();
+    });
+
+    $('#singleImageInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      e.target.value = '';
+      if (!file || !replaceTarget) return;
+      const t = replaceTarget;
+      try {
+        const path = await addImageFile(file, t.kind === 'img' && t.key === 'hero.image' ? 1920 : 1600);
+        if (t.kind === 'img') {
+          S.draft.images[t.key] = { ...imgOf(S.draft, t.key), src: path };
+          renderImages();
+        } else {
+          const it = S.draft.gallery.find((g) => g.id === t.id);
+          if (it) it.src = path;
+          renderGallery();
+        }
+        changed();
+        toast('Image prête. Elle sera envoyée à la publication.', 'ok');
+      } catch (err) { toast(err.message, 'err'); }
+    });
+
+    /* =====================================================================
+       ONGLET GALERIE
+       ===================================================================== */
+    function renderGallery() {
+      const items = S.draft.gallery;
+      const cats = [...new Set(items.map((g) => (g.category || '').trim()).filter(Boolean))];
+      $('#catList').innerHTML = cats.map((c) => `<option value="${esc(c)}">`).join('');
+      $('#galCount').textContent = items.length ? `${items.length} photo${items.length > 1 ? 's' : ''} · ${cats.length} catégorie${cats.length > 1 ? 's' : ''}` : 'Aucune photo';
+      $('#galleryList').innerHTML = items.map((g, i) => `
+        <div class="gal-item" data-id="${esc(g.id)}" data-index="${i}">
+          <div class="gal-handle">
+            <span class="grip" draggable="true" title="Glisser pour déplacer" aria-hidden="true">${ICON.grip}</span>
+            <span class="num">${i + 1}</span>
+          </div>
+          <div class="gal-thumb"><img src="${esc(resolveSrc(g.src))}" alt="" loading="lazy">${S.pending[g.src] ? '<span class="new">NOUVEAU</span>' : ''}</div>
+          <div class="gal-fields">
+            <input class="input" data-gf="title" value="${esc(g.title)}" placeholder="Titre de la photo" aria-label="Titre de la photo ${i + 1}">
+            <div class="gal-row">
+              <input class="input" data-gf="category" value="${esc(g.category)}" list="catList" placeholder="Catégorie" aria-label="Catégorie">
+              <input class="input" data-gf="alt" value="${esc(g.alt)}" placeholder="Description" aria-label="Description de l’image">
+            </div>
+            <div class="gal-actions">
+              <button type="button" class="icon-btn" data-gact="up" aria-label="Monter" ${i === 0 ? 'disabled' : ''}>${ICON.up}</button>
+              <button type="button" class="icon-btn" data-gact="down" aria-label="Descendre" ${i === items.length - 1 ? 'disabled' : ''}>${ICON.down}</button>
+              <button type="button" class="btn btn-quiet btn-sm" data-gact="replace">${ICON.swap} Remplacer</button>
+              <span class="spacer"></span>
+              <button type="button" class="icon-btn btn-danger" data-gact="delete" aria-label="Supprimer cette photo">${ICON.trash}</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    const galItem = (el) => { const box = el.closest('.gal-item'); return box ? S.draft.gallery.find((g) => g.id === box.dataset.id) : null; };
+
+    $('#galleryList').addEventListener('input', (e) => {
+      const f = e.target.dataset.gf;
+      const it = galItem(e.target);
+      if (!f || !it) return;
+      it[f] = e.target.value;
+      if (f === 'category') $('#catList').innerHTML = [...new Set(S.draft.gallery.map((g) => (g.category || '').trim()).filter(Boolean))].map((c) => `<option value="${esc(c)}">`).join('');
+      changed();
+    });
+    $('#galleryList').addEventListener('focusin', (e) => { const it = galItem(e.target); if (it) scrollPreviewTo('gallery:' + it.id); });
+    $('#galleryList').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-gact]');
+      if (!b) return;
+      const it = galItem(b);
+      const list = S.draft.gallery;
+      const i = list.indexOf(it);
+      const act = b.dataset.gact;
+      if (act === 'up' && i > 0) { [list[i - 1], list[i]] = [list[i], list[i - 1]]; }
+      if (act === 'down' && i < list.length - 1) { [list[i + 1], list[i]] = [list[i], list[i + 1]]; }
+      if (act === 'replace') { replaceTarget = { kind: 'gallery', id: it.id }; $('#singleImageInput').click(); return; }
+      if (act === 'delete') {
+        if (!confirm(`Retirer « ${it.title || 'cette photo'} » de la galerie ?`)) return;
+        list.splice(i, 1);
+        toast('Photo retirée de la galerie.');
+      }
+      renderGallery();
+      if (act === 'up' || act === 'down') $(`.gal-item[data-id="${CSS.escape(it.id)}"] [data-gact="${act}"]`)?.focus();
+      changed();
+    });
+
+    // Glisser-déposer pour réordonner
+    let dragId = null;
+    $('#galleryList').addEventListener('dragstart', (e) => {
+      const box = e.target.closest('.gal-item');
+      if (!box) return;
+      dragId = box.dataset.id;
+      box.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', dragId);
+      try { e.dataTransfer.setDragImage(box, 20, 20); } catch { }
+    });
+    $('#galleryList').addEventListener('dragover', (e) => {
+      if (!dragId) return;
+      const box = e.target.closest('.gal-item');
+      $$('.gal-item').forEach((n) => n.classList.remove('drop-before', 'drop-after'));
+      if (!box || box.dataset.id === dragId) return;
+      e.preventDefault();
+      const r = box.getBoundingClientRect();
+      box.classList.add(e.clientY < r.top + r.height / 2 ? 'drop-before' : 'drop-after');
+    });
+    $('#galleryList').addEventListener('drop', (e) => {
+      if (!dragId) return;
+      e.preventDefault();
+      const box = e.target.closest('.gal-item');
+      if (box && box.dataset.id !== dragId) {
+        const list = S.draft.gallery;
+        const from = list.findIndex((g) => g.id === dragId);
+        const [moved] = list.splice(from, 1);
+        let to = list.findIndex((g) => g.id === box.dataset.id);
+        if (box.classList.contains('drop-after')) to++;
+        list.splice(to, 0, moved);
+        renderGallery();
+        changed();
+      }
+    });
+    $('#galleryList').addEventListener('dragend', () => { dragId = null; $$('.gal-item').forEach((n) => n.classList.remove('dragging', 'drop-before', 'drop-after')); });
+
+    async function addGalleryFiles(files) {
+      files = [...files].filter((f) => f.type.startsWith('image/'));
+      if (!files.length) return;
+      const lastCat = S.draft.gallery[0]?.category || 'Vie du lycée';
+      let added = 0;
+      for (const file of files) {
+        try {
+          const path = await addImageFile(file, 1600);
+          const base = file.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
+          S.draft.gallery.unshift({ id: 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), src: path, title: '', category: lastCat, alt: base });
+          added++;
+        } catch (err) { toast(err.message, 'err'); }
+      }
+      if (added) {
+        renderGallery();
+        changed();
+        toast(`${added} photo${added > 1 ? 's ajoutées' : ' ajoutée'} en tête de galerie. Pensez à leur donner un titre.`, 'ok');
+        $('#galleryList input[data-gf="title"]')?.focus();
+      }
+    }
+    $('#galleryInput').addEventListener('change', (e) => { addGalleryFiles(e.target.files); e.target.value = ''; });
+    const dz = $('#dropZone');
+    ['dragenter', 'dragover'].forEach((t) => dz.addEventListener(t, (e) => { if (dragId) return; e.preventDefault(); dz.classList.add('over'); }));
+    ['dragleave', 'drop'].forEach((t) => dz.addEventListener(t, () => dz.classList.remove('over')));
+    dz.addEventListener('drop', (e) => { if (dragId) return; e.preventDefault(); addGalleryFiles(e.dataTransfer.files); });
+
+    /* =====================================================================
+       NAVIGATION ENTRE ONGLETS / FOCUS DEPUIS L'APERÇU
+       ===================================================================== */
+    function setTab(tab) {
+      S.tab = tab;
+      $$('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === tab)));
+      $('#panelTexts').hidden = tab !== 'texts';
+      $('#panelImages').hidden = tab !== 'images';
+      $('#panelGallery').hidden = tab !== 'gallery';
+      if (tab === 'texts') $$('#textGroups details[open] textarea').forEach(autosize);
+      $$('.panel:not([hidden]) .illus').forEach((el) => Illus.update(el));
+    }
+    $$('.tab').forEach((t) => t.addEventListener('click', () => setTab(t.dataset.tab)));
+
+    function flash(el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1600); }
+
+    function focusField(key) {
+      setView('edit');
+      if (key.startsWith('gallery:')) {
+        setTab('gallery');
+        const box = $(`.gal-item[data-id="${CSS.escape(key.slice(8))}"]`);
+        if (box) { box.scrollIntoView({ block: 'center' }); flash(box); $('input', box).focus({ preventScroll: true }); }
+        return;
+      }
+      if (S.imgFields.some((f) => f.key === key)) {
+        setTab('images');
+        const box = $(`.img-card[data-field="${CSS.escape(key)}"]`);
+        if (box) { box.scrollIntoView({ block: 'center' }); flash(box); }
+        return;
+      }
+      setTab('texts');
+      if ($('#searchTexts').value) { $('#searchTexts').value = ''; renderTexts(); }
+      const box = $(`.field[data-field="${CSS.escape(key)}"]`);
+      if (!box) return;
+      const det = box.closest('details');
+      if (det && !det.open) { det.open = true; $$('textarea', det).forEach(autosize); }
+      box.scrollIntoView({ block: 'center' });
+      flash(box);
+      const inp = $('[data-key]', box);
+      inp.focus({ preventScroll: true });
+      if (inp.setSelectionRange) { const n = inp.value.length; try { inp.setSelectionRange(n, n); } catch { } }
+    }
+
+    function setView(v) {
+      $('#appView').dataset.view = v;
+      $$('.mobile-switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    }
+    $$('.mobile-switch button').forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
+    $$('.seg button').forEach((b) => b.addEventListener('click', () => {
+      $$('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      $('#previewStage').classList.toggle('mobile', b.dataset.device === 'mobile');
+    }));
+
+    function updateCounts() {
+      $('#cTexts').textContent = S.fields.length;
+      $('#cImages').textContent = S.imgFields.length;
+      $('#cGallery').textContent = S.draft ? S.draft.gallery.length : 0;
+    }
+
+    function renderAll() {
+      renderTexts();
+      renderImages();
+      renderGallery();
+      refreshStatus();
+    }
+
+    /* =====================================================================
+       PUBLICATION
+       ===================================================================== */
+    function dialog(html) {
+      $('#dialogHost').innerHTML = `<div class="overlay"><div class="dialog" role="dialog" aria-modal="true">${html}</div></div>`;
+      return $('#dialogHost .dialog');
+    }
+    const closeDialog = () => { $('#dialogHost').innerHTML = ''; };
+
+    function usedPending() {
+      const used = new Set([...Object.values(S.draft.images).map((i) => i && i.src), ...S.draft.gallery.map((g) => g.src)]);
+      return Object.entries(S.pending).filter(([p]) => used.has(p));
+    }
+
+    $('#btnPublish').addEventListener('click', () => {
+      if (!isDirty()) return;
+      if (S.auth.offline) return exportFile(true);
+      const n = changesCount();
+      const imgs = usedPending().length;
+      const d = dialog(`
+        <h3>Publier sur le site ?</h3>
+        <p>Les visiteurs verront les changements dans environ une minute.</p>
+        <ul>
+          <li>${n} zone${n > 1 ? 's' : ''} modifiée${n > 1 ? 's' : ''}</li>
+          ${imgs ? `<li>${imgs} nouvelle${imgs > 1 ? 's' : ''} image${imgs > 1 ? 's' : ''} à envoyer</li>` : ''}
+        </ul>
+        <div class="actions">
+          <button class="btn btn-ghost" data-act="cancel">Annuler</button>
+          <button class="btn btn-primary" data-act="go">Publier maintenant</button>
+        </div>`);
+      d.addEventListener('click', (e) => {
+        const a = e.target.closest('[data-act]')?.dataset.act;
+        if (a === 'cancel') closeDialog();
+        if (a === 'go') publish();
+      });
+      $('[data-act="go"]', d).focus();
+    });
+
+    async function publish() {
+      const pend = usedPending();
+      const content = buildContent(S.draft, { updatedAt: new Date().toISOString() });
+      const files = pend.map(([path, url]) => ({ path, base64: url.split(',')[1] }));
+      files.push({ path: 'content.json', text: JSON.stringify(content, null, 2) + '\n' });
+
+      const d = dialog(`
+        <h3>Publication en cours…</h3>
+        <p>Ne fermez pas cette page.</p>
+        <div class="steps">
+          <div class="step" data-s="prepare"><i></i>Connexion au dépôt GitHub</div>
+          <div class="step" data-s="upload"><i></i><span>Envoi des fichiers</span></div>
+          <div class="step" data-s="commit"><i></i>Enregistrement de la mise à jour</div>
+          <div class="step" data-s="live"><i></i>Mise en ligne du site</div>
+        </div>
+        <div class="bar"><span id="pubBar"></span></div>
+        <div class="actions" hidden id="pubActions"><button class="btn btn-primary" data-act="close">Fermer</button></div>`);
+      const order = ['prepare', 'upload', 'commit', 'live'];
+      const mark = (s, extra) => {
+        const idx = order.indexOf(s);
+        order.forEach((k, i) => { const el = $(`[data-s="${k}"]`, d); el.classList.toggle('done', i < idx); el.classList.toggle('active', i === idx); });
+        if (extra) $('[data-s="upload"] span', d).textContent = extra;
+      };
+      const bar = (p) => { $('#pubBar').style.width = p + '%'; };
+      d.addEventListener('click', (e) => { if (e.target.closest('[data-act="close"]')) closeDialog(); });
+
+      statusLock = true;
+      setStatus('busy', 'Publication…');
+      $('#btnPublish').disabled = true;
+      try {
+        await GH.commit(files, `Mise à jour du site via l’espace admin (${changesCount()} modification(s))`, (step, i, n) => {
+          if (step === 'prepare') { mark('prepare'); bar(8); }
+          if (step === 'upload') { mark('upload', `Envoi des fichiers (${i}/${n})`); bar(10 + Math.round((i / n) * 60)); }
+          if (step === 'commit') { mark('commit'); bar(78); }
+        });
+        // Succès : le brouillon devient la version publiée
+        pend.forEach(([p, url]) => { S.cache[p] = url; });
+        S.pending = {};
+        S.base = normalize(content);
+        S.base.updatedAt = content.updatedAt;
+        S.draft = normalize(content);
+        await idb.del(draftKey());
+        mark('live'); bar(85);
+        $('h3', d).textContent = 'Publié ✓';
+        $('p', d).textContent = 'Les modifications sont enregistrées. Le site se met à jour automatiquement — vous pouvez fermer cette fenêtre.';
+        $('#pubActions', d).hidden = false;
+        renderAll();
+        statusLock = true;
+        setStatus('busy', 'Mise en ligne…');
+        const live = await waitLive(content.updatedAt);
+        statusLock = false;
+        if ($('[data-s="live"]', d)) {
+          $('[data-s="live"]', d).classList.remove('active');
+          $('[data-s="live"]', d).classList.add('done');
+          bar(100);
+          if (!live) $('p', d).textContent = 'Publié sur GitHub. La mise en ligne prend parfois quelques minutes de plus : actualisez le site un peu plus tard.';
+          else $('p', d).textContent = 'Le site est à jour pour tous les visiteurs.';
+        }
+        if (live) { setStatus('ok', 'En ligne ✓'); toast('Le site est à jour.', 'ok'); setTimeout(refreshStatus, 6000); }
+        else refreshStatus();
+      } catch (err) {
+        statusLock = false;
+        const cur = $('.step.active', d);
+        if (cur) { cur.classList.remove('active'); cur.classList.add('fail'); }
+        $('h3', d).textContent = 'La publication a échoué';
+        $('p', d).textContent = err.message + ' Vos modifications sont conservées sur cet appareil.';
+        $('#pubActions', d).hidden = false;
+        setStatus('error', 'Échec de la publication');
+        $('#btnPublish').disabled = false;
+        setTimeout(refreshStatus, 8000);
+      }
+    }
+
+    /** Attend que le site en ligne serve la nouvelle version de content.json */
+    async function waitLive(updatedAt) {
+      for (let i = 0; i < 40; i++) {
+        await new Promise((r) => setTimeout(r, i < 4 ? 4000 : 6000));
+        try {
+          const r = await fetch('../content.json?t=' + Date.now(), { cache: 'no-store' });
+          if (r.ok && (await r.json()).updatedAt === updatedAt) return true;
+        } catch { }
+      }
+      return false;
+    }
+
+    /* ---------- Export / import manuel ---------- */
+    function exportFile(fromPublish) {
+      const content = buildContent(S.draft, { updatedAt: new Date().toISOString() });
+      // En mode export, les nouvelles images sont intégrées directement dans le fichier
+      const embed = (src) => S.pending[src] || S.cache[src] || src;
+      Object.values(content.images).forEach((i) => { i.src = embed(i.src); });
+      content.gallery.forEach((g) => { g.src = embed(g.src); });
+      const blob = new Blob([JSON.stringify(content, null, 2) + '\n'], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'content.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      if (fromPublish) {
+        const d = dialog(`<h3>Fichier content.json téléchargé</h3>
+          <p>Pour mettre le site à jour, remplacez le fichier <b>content.json</b> à la racine du site par celui que vous venez de télécharger (par l’hébergeur, le FTP ou GitHub).</p>
+          <div class="actions"><button class="btn btn-primary" data-act="close">Compris</button></div>`);
+        d.addEventListener('click', (e) => { if (e.target.closest('[data-act="close"]')) closeDialog(); });
+      } else toast('content.json téléchargé.', 'ok');
+    }
+
+    $('#importInput').addEventListener('change', async (e) => {
+      const f = e.target.files[0];
+      e.target.value = '';
+      if (!f) return;
+      try {
+        const data = JSON.parse(await f.text());
+        if (!data || typeof data !== 'object' || !('texts' in data || 'gallery' in data)) throw new Error();
+        S.draft = normalize(data);
+        renderAll(); changed();
+        toast('Contenu importé. Vérifiez puis publiez.', 'ok');
+      } catch { toast('Ce fichier n’est pas un content.json valide.', 'err'); }
+    });
+
+    /* ---------- Menu ---------- */
+    const menu = $('#menu');
+    $('#btnMenu').addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.hidden = !menu.hidden;
+      $('#btnMenu').setAttribute('aria-expanded', String(!menu.hidden));
+    });
+    document.addEventListener('click', (e) => { if (!menu.hidden && !menu.contains(e.target)) { menu.hidden = true; $('#btnMenu').setAttribute('aria-expanded', 'false'); } });
+    menu.addEventListener('click', async (e) => {
+      const id = e.target.closest('button')?.id;
+      if (!id) return;
+      menu.hidden = true;
+      if (id === 'mDiscard') {
+        if (!isDirty()) return toast('Aucune modification à annuler.');
+        if (!confirm('Annuler toutes les modifications non publiées ?')) return;
+        S.draft = normalize(S.base);
+        S.pending = {};
+        await idb.del(draftKey());
+        renderAll(); pushPreview();
+        toast('Modifications annulées.');
+      }
+      if (id === 'mExport') exportFile(false);
+      if (id === 'mImport') $('#importInput').click();
+      if (id === 'mReload') {
+        if (isDirty() && !confirm('Recharger le contenu en ligne ? Vos modifications non publiées seront perdues.')) return;
+        await loadContent(true);
+        toast('Contenu en ligne rechargé.');
+      }
+      if (id === 'mLogout') {
+        if (isDirty() && !confirm('Vos modifications non publiées restent enregistrées sur cet appareil. Se déconnecter ?')) return;
+        store.del('lpcms.auth');
+        location.reload();
+      }
+    });
+
+    /* =====================================================================
+       CONNEXION & DÉMARRAGE
+       ===================================================================== */
+    function guessRepo() {
+      // Site hébergé sur https://compte.github.io/depot/ → valeurs pré-remplies
+      const h = location.hostname;
+      if (h.endsWith('.github.io')) {
+        const owner = h.replace('.github.io', '');
+        const seg = location.pathname.split('/').filter(Boolean);
+        const repo = seg.length && seg[0] !== 'admin' ? seg[0] : h;
+        return { owner, repo };
+      }
+      return { owner: '', repo: 'Lpelia' };
+    }
+
+    function showLogin(errMsg) {
+      $('#loadingView').hidden = true;
+      $('#appView').hidden = true;
+      $('#loginView').hidden = false;
+      const saved = store.get('lpcms.auth') || {};
+      const g = guessRepo();
+      $('#ghOwner').value = saved.owner || g.owner;
+      $('#ghRepo').value = saved.repo || g.repo;
+      $('#ghBranch').value = saved.branch || '';
+      $('#ghDir').value = saved.dir || '';
+      $('#loginError').hidden = !errMsg;
+      $('#loginError').textContent = errMsg || '';
+      ($('#ghOwner').value ? $('#ghToken') : $('#ghOwner')).focus();
+    }
+
+    $('#loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const auth = {
+        owner: $('#ghOwner').value.trim(),
+        repo: $('#ghRepo').value.trim().replace(/\.git$/, ''),
+        branch: $('#ghBranch').value.trim(),
+        dir: $('#ghDir').value.trim().replace(/^\/+|\/+$/g, ''),
+        token: $('#ghToken').value.trim()
+      };
+      if (!auth.owner || !auth.repo || !auth.token) return;
+      const btn = $('#loginBtn');
+      btn.disabled = true;
+      btn.textContent = 'Vérification…';
+      S.auth = auth;
+      try {
+        await GH.checkRepo();
+        store.set('lpcms.auth', S.auth, $('#ghRemember').checked);
+        await startApp();
+      } catch (err) {
+        S.auth = null;
+        showLogin(err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Se connecter';
+      }
+    });
+
+    $('#offlineBtn').addEventListener('click', async () => {
+      S.auth = { offline: true };
+      await startApp();
+    });
+
+    async function loadContent(discardDraft) {
+      const published = await readPublished();
+      S.base = normalize(published);
+      S.base.updatedAt = published?.updatedAt || null;
+      S.draft = normalize(published);
+      S.pending = {};
+      if (discardDraft) await idb.del(draftKey());
+      else {
+        const saved = await idb.get(draftKey());
+        if (saved && saved.draft) {
+          S.draft = normalize(saved.draft);
+          S.pending = saved.pending || {};
+          if (isDirty()) {
+            const outdated = (saved.baseUpdatedAt || null) !== (S.base.updatedAt || null);
+            toast(outdated
+              ? 'Brouillon restauré. Attention : le site a été publié depuis — vérifiez avant de republier.'
+              : 'Votre brouillon non publié a été restauré.', outdated ? 'err' : 'ok', 6500);
+          }
+        }
+      }
+      renderAll();
+      pushPreview();
+    }
+
+    async function startApp() {
+      $('#loginView').hidden = true;
+      $('#loadingView').hidden = false;
+      try {
+        await readSite();
+        try {
+          const r = await fetch('illustrations/map.json', { cache: 'no-cache' });
+          S.map = r.ok ? await r.json() : null;
+        } catch { S.map = null; }
+        await loadContent(false);
+      } catch (err) {
+        if (!S.auth.offline && (err.status === 401 || err.status === 403 || err.status === 404)) { S.auth = null; return showLogin(err.message); }
+        $('#loadingView').innerHTML = `<div style="text-align:center;max-width:420px;padding:1rem"><b>Impossible de charger le site.</b><br><span style="font-size:.875rem">${esc(err.message)}. Ouvrez l’admin depuis le site en ligne (ou un serveur local), pas en double-cliquant sur le fichier.</span></div>`;
+        return;
+      }
+      $('#repoLabel').textContent = S.auth.offline ? 'Mode export manuel (sans GitHub)' : `${S.auth.owner}/${S.auth.repo} · ${S.auth.branch}`;
+      $('#menuInfo').textContent = S.auth.offline ? 'Les changements sont enregistrés dans un fichier à télécharger.' : `Publication vers ${S.auth.owner}/${S.auth.repo}`;
+      $('#btnPublishLabel').textContent = S.auth.offline ? 'Exporter' : 'Publier';
+      $('#mLogout').textContent = S.auth.offline ? 'Quitter le mode export' : 'Se déconnecter';
+      $('#loadingView').hidden = true;
+      $('#appView').hidden = false;
+      $$('.illus').forEach((el) => Illus.update(el));
+      $('#previewFrame').src = '../index.html?preview=1';
+    }
+
+    (async function boot() {
+      const saved = store.get('lpcms.auth');
+      if (saved && saved.token) {
+        S.auth = saved;
+        try { await GH.checkRepo(); await startApp(); }
+        catch (err) { S.auth = null; showLogin(err.status === 401 ? 'Votre session a expiré. Collez un nouveau jeton.' : err.message); }
+      } else showLogin();
+    })();
+  </script>
+</body>
+
+</html>

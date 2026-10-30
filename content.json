@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "texts": {},
+  "images": {},
+  "gallery": [
+    {
+      "id": "g1",
+      "src": "assets/images/presentation_lab.jpg",
+      "alt": "Travaux pratiques sur bancs d'essai et oscilloscopes en atelier",
+      "title": "Mesures et essais électroniques",
+      "category": "Ateliers"
+    },
+    {
+      "id": "g2",
+      "src": "assets/images/gallery_components.jpg",
+      "alt": "Circuit électronique et microprocesseur haute précision",
+      "title": "Systèmes et circuits imprimés",
+      "category": "Équipements"
+    },
+    {
+      "id": "g3",
+      "src": "assets/images/bts_se_info.jpg",
+      "alt": "Apprenants devant la baie de serveurs et câblage réseau",
+      "title": "Administration système et câblage",
+      "category": "Informatique & Réseaux"
+    },
+    {
+      "id": "g4",
+      "src": "assets/images/bt_electronique.jpg",
+      "alt": "Technicien en maintenance et réparation de carte électronique",
+      "title": "Maintenance et soudure de précision",
+      "category": "Ateliers"
+    },
+    {
+      "id": "g5",
+      "src": "assets/images/kkk.jpg",
+      "alt": "Apprenants en blouse réalisant des mesures sur platine d’essai",
+      "title": "Travaux pratiques en laboratoire",
+      "category": "Ateliers"
+    },
+    {
+      "id": "g6",
+      "src": "assets/images/hero_workshop.jpg",
+      "alt": "Atelier technologique d'électronique appliquée",
+      "title": "Plateaux techniques modernes",
+      "category": "Équipements"
+    },
+    {
+      "id": "g7",
+      "src": "assets/images/lkl.jpg",
+      "alt": "Apprenants présentant leurs attestations et leurs projets électroniques",
+      "title": "Remise des attestations de projets",
+      "category": "Vie du lycée"
+    },
+    {
+      "id": "g8",
+      "src": "assets/images/resultats_excellence.jpg",
+      "alt": "Promotion d'apprenants célébrant leur parcours au LPELIA",
+      "title": "Dynamique de cohésion et d’excellence",
+      "category": "Vie du lycée"
+    }
+  ]
+}
