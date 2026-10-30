@@ -90,6 +90,28 @@
     .login .btn-primary { width: 100%; height: 46px; font-size: .9375rem; }
     .login-alt { display: block; width: 100%; text-align: center; margin-top: .9rem; font-size: .8125rem; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
     .login-alt:hover { color: var(--blue); }
+
+    /* ---------- Comptes administrateurs ---------- */
+    .acc-intro { font-size: .8125rem; color: var(--text-2); background: var(--cyan-50); border-radius: 10px; padding: .7rem .85rem; margin-bottom: .8rem; }
+    .acc-form { padding: .9rem; }
+    .acc-form h4, .acc-list-title { font-family: var(--font-h); font-size: .9rem; color: var(--navy-900); margin-bottom: .75rem; }
+    .acc-pass { display: flex; gap: .5rem; align-items: center; }
+    .acc-pass .input { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .acc-list-title { margin: 1.25rem 0 .5rem; }
+    .acc-item { border: 1px solid var(--line); border-radius: var(--radius); background: #fff; padding: .8rem .9rem; margin-bottom: .55rem; }
+    .acc-item.off { background: #f8fafc; }
+    .acc-head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .acc-head b { font-family: var(--font-h); color: var(--navy-900); }
+    .acc-meta { font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+    .acc-meta code { font-size: .78rem; color: var(--text-2); }
+    .pill { font-size: .7rem; font-weight: 700; border-radius: 99px; padding: .1rem .5rem; }
+    .pill.ok { background: var(--ok-50); color: var(--ok); }
+    .pill.off { background: #f1f5f9; color: var(--muted); }
+    .pill.warn { background: var(--warn-50); color: var(--warn); }
+    .acc-actions { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .5rem; margin-left: -.65rem; }
+    .acc-empty { font-size: .875rem; color: var(--muted); text-align: center; padding: 1rem; }
+    .cred { background: #f1f5f9; border-radius: 10px; padding: .75rem .85rem; margin-top: .75rem; font-size: .875rem; line-height: 1.7; word-break: break-all; }
+    .cred code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; color: var(--navy-900); }
     details.help { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1rem; font-size: .8125rem; color: var(--text-2); }
     details.help summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
     details.help ol { margin: .6rem 0 0 1.1rem; display: grid; gap: .35rem; }
@@ -287,7 +309,7 @@
 
   <!-- ======================= ÉCRAN DE CONNEXION ======================= -->
   <main class="login" id="loginView" hidden>
-    <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="login-card">
       <div class="login-brand">
         <img src="../assets/images/logo_lpelia.png" alt="">
         <div>
@@ -295,9 +317,27 @@
           <p>Site vitrine LPELIA · Treichville</p>
         </div>
       </div>
-      <p class="login-intro">Connectez-vous avec votre jeton GitHub pour modifier les textes, les images et la galerie, puis publier les changements en ligne.</p>
 
       <div class="login-error" id="loginError" hidden></div>
+
+      <!-- Connexion des administrateurs (comptes créés par le propriétaire) -->
+      <form id="userForm" autocomplete="on">
+        <p class="login-intro">Connectez-vous avec l’identifiant et le mot de passe fournis par le responsable du site.</p>
+        <div class="form-row">
+          <label class="label" for="uId">Identifiant</label>
+          <input class="input" id="uId" required autocomplete="username" autocapitalize="none" spellcheck="false">
+        </div>
+        <div class="form-row">
+          <label class="label" for="uPass">Mot de passe</label>
+          <input class="input" id="uPass" type="password" required autocomplete="current-password">
+        </div>
+        <label class="check"><input type="checkbox" id="uRemember"> Rester connecté sur cet appareil</label>
+        <button class="btn btn-primary" type="submit" id="userBtn" style="width:100%">Se connecter</button>
+        <button class="login-alt" type="button" id="ownerToggle">Accès propriétaire (jeton GitHub)</button>
+      </form>
+
+    <form id="loginForm" autocomplete="off" hidden>
+      <p class="login-intro"><b>Accès propriétaire.</b> Connectez-vous avec votre jeton GitHub pour modifier le site et gérer les comptes des administrateurs.</p>
 
       <div class="form-grid">
         <div class="form-row">
@@ -339,7 +379,9 @@
           <li>Générez, copiez le jeton et collez-le ici. Il reste uniquement sur cet appareil.</li>
         </ol>
       </details>
+      <button class="login-alt" type="button" id="userToggle">← Retour à la connexion par identifiant</button>
     </form>
+    </div>
   </main>
 
   <!-- ======================= CHARGEMENT ======================= -->
@@ -389,6 +431,7 @@
           <button class="tab" role="tab" aria-selected="true" data-tab="texts">Textes <span class="count" id="cTexts"></span></button>
           <button class="tab" role="tab" aria-selected="false" data-tab="images">Images <span class="count" id="cImages"></span></button>
           <button class="tab" role="tab" aria-selected="false" data-tab="gallery">Galerie <span class="count" id="cGallery"></span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="accounts" id="tabAccounts" hidden>Comptes <span class="count" id="cAccounts"></span></button>
         </div>
 
         <div class="panel" id="panelTexts" role="tabpanel">
@@ -414,6 +457,32 @@
           <div class="gal-toolbar"><span id="galCount"></span><span>Glissez ⋮⋮ pour réordonner</span></div>
           <div id="galleryList"></div>
           <datalist id="catList"></datalist>
+        </div>
+
+        <div class="panel" id="panelAccounts" role="tabpanel" hidden>
+          <p class="acc-intro">Seules les personnes que vous ajoutez ici peuvent entrer dans l’espace admin et publier. Un compte suspendu ou supprimé ne peut plus se connecter (effectif environ 1 minute après l’enregistrement).</p>
+          <form class="group acc-form" id="accForm" autocomplete="off">
+            <h4>Ajouter un administrateur</h4>
+            <div class="form-row">
+              <label class="label" for="accName">Nom complet</label>
+              <input class="input" id="accName" required maxlength="60" placeholder="ex : Awa Koné">
+            </div>
+            <div class="form-row">
+              <label class="label" for="accId">Identifiant</label>
+              <input class="input" id="accId" required maxlength="30" placeholder="ex : awa.kone" autocapitalize="none" spellcheck="false">
+              <p class="hint">3 à 30 caractères : lettres minuscules, chiffres, point, tiret.</p>
+            </div>
+            <div class="form-row">
+              <label class="label" for="accPass">Mot de passe</label>
+              <div class="acc-pass">
+                <input class="input" id="accPass" required minlength="10" spellcheck="false" autocomplete="new-password">
+                <button class="btn btn-ghost btn-sm" type="button" id="accGen">Générer</button>
+              </div>
+              <p class="hint">10 caractères minimum. Vous le transmettrez vous-même à la personne.</p>
+            </div>
+            <button class="btn btn-primary" type="submit" id="accSubmit">Créer le compte</button>
+          </form>
+          <div id="accList"></div>
         </div>
       </section>
 
@@ -550,9 +619,10 @@
         if (!S.auth.branch) S.auth.branch = repo.default_branch || 'main';
         return repo;
       },
-      async readContent() {
+      readContent() { return this.readJson('content.json'); },
+      async readJson(file) {
         try {
-          const f = await this.req(`/contents/${this.path('content.json').split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(S.auth.branch)}`);
+          const f = await this.req(`/contents/${this.path(file).split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(S.auth.branch)}`);
           const bin = atob(f.content.replace(/\n/g, ''));
           const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
           return JSON.parse(new TextDecoder().decode(bytes));
@@ -1143,6 +1213,7 @@
       $('#panelTexts').hidden = tab !== 'texts';
       $('#panelImages').hidden = tab !== 'images';
       $('#panelGallery').hidden = tab !== 'gallery';
+      $('#panelAccounts').hidden = tab !== 'accounts';
       if (tab === 'texts') $$('#textGroups details[open] textarea').forEach(autosize);
       $$('.panel:not([hidden]) .illus').forEach((el) => Illus.update(el));
     }
@@ -1268,7 +1339,8 @@
       setStatus('busy', 'Publication…');
       $('#btnPublish').disabled = true;
       try {
-        await GH.commit(files, `Mise à jour du site via l’espace admin (${changesCount()} modification(s))`, (step, i, n) => {
+        if (S.auth.user) await Accounts.assertActive();
+        await GH.commit(files, `Mise à jour du site via l’espace admin (${changesCount()} modification(s)) — par ${Accounts.who()}`, (step, i, n) => {
           if (step === 'prepare') { mark('prepare'); bar(8); }
           if (step === 'upload') { mark('upload', `Envoi des fichiers (${i}/${n})`); bar(10 + Math.round((i / n) * 60)); }
           if (step === 'commit') { mark('commit'); bar(78); }
@@ -1305,6 +1377,7 @@
         $('h3', d).textContent = 'La publication a échoué';
         $('p', d).textContent = err.message + ' Vos modifications sont conservées sur cet appareil.';
         $('#pubActions', d).hidden = false;
+        if (err.revoked) { store.del('lpcms.auth'); $('#pubActions', d).innerHTML = '<button class="btn btn-primary" onclick="location.reload()">Fermer</button>'; }
         setStatus('error', 'Échec de la publication');
         $('#btnPublish').disabled = false;
         setTimeout(refreshStatus, 8000);
@@ -1409,19 +1482,30 @@
       return { owner: '', repo: 'Lpelia' };
     }
 
-    function showLogin(errMsg) {
+    let loginMode = 'user'; // 'user' (identifiant) ou 'owner' (jeton GitHub)
+    function setLoginMode(mode) {
+      loginMode = mode;
+      $('#userForm').hidden = mode !== 'user';
+      $('#loginForm').hidden = mode !== 'owner';
+      (mode === 'owner' ? ($('#ghOwner').value ? $('#ghToken') : $('#ghOwner')) : ($('#uId').value ? $('#uPass') : $('#uId'))).focus();
+    }
+    $('#ownerToggle').addEventListener('click', () => { $('#loginError').hidden = true; setLoginMode('owner'); });
+    $('#userToggle').addEventListener('click', () => { $('#loginError').hidden = true; setLoginMode('user'); });
+
+    function showLogin(errMsg, mode = loginMode) {
       $('#loadingView').hidden = true;
       $('#appView').hidden = true;
       $('#loginView').hidden = false;
       const saved = store.get('lpcms.auth') || {};
       const g = guessRepo();
-      $('#ghOwner').value = saved.owner || g.owner;
-      $('#ghRepo').value = saved.repo || g.repo;
-      $('#ghBranch').value = saved.branch || '';
-      $('#ghDir').value = saved.dir || '';
+      $('#ghOwner').value = (!saved.user && saved.owner) || g.owner;
+      $('#ghRepo').value = (!saved.user && saved.repo) || g.repo;
+      $('#ghBranch').value = (!saved.user && saved.branch) || '';
+      $('#ghDir').value = (!saved.user && saved.dir) || '';
+      $('#uPass').value = '';
       $('#loginError').hidden = !errMsg;
       $('#loginError').textContent = errMsg || '';
-      ($('#ghOwner').value ? $('#ghToken') : $('#ghOwner')).focus();
+      setLoginMode(mode);
     }
 
     $('#loginForm').addEventListener('submit', async (e) => {
@@ -1454,6 +1538,226 @@
     $('#offlineBtn').addEventListener('click', async () => {
       S.auth = { offline: true };
       await startApp();
+    });
+
+    /* =====================================================================
+       COMPTES ADMINISTRATEURS
+       - Le propriétaire (connecté avec son jeton GitHub) crée les comptes.
+       - admin/comptes.json contient, pour chaque compte, le jeton de
+         publication CHIFFRÉ avec le mot de passe (PBKDF2 + AES-GCM).
+         Aucun mot de passe n'est stocké : sans le bon mot de passe,
+         impossible de récupérer le jeton, donc impossible de publier.
+       - Un compte suspendu ou supprimé est refusé à la connexion,
+         au rechargement de l'admin et au moment de publier.
+       ===================================================================== */
+    const ACC_FILE = 'admin/comptes.json';
+    const B64 = {
+      enc: (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))),
+      dec: (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0))
+    };
+    const Accounts = {
+      ITER: 600000,
+      data: null, // contenu de comptes.json (propriétaire uniquement)
+      normId: (s) => String(s || '').trim().toLowerCase(),
+      who() { return S.auth && S.auth.user ? `${S.auth.name} (${S.auth.user})` : 'le propriétaire'; },
+      async key(pass, salt, iter) {
+        const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+        return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: iter, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+      },
+      async seal(token, pass) {
+        const salt = crypto.getRandomValues(new Uint8Array(16));
+        const iv = crypto.getRandomValues(new Uint8Array(12));
+        const k = await this.key(pass, salt, this.ITER);
+        const data = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, k, new TextEncoder().encode(token));
+        return { iter: this.ITER, salt: B64.enc(salt), iv: B64.enc(iv), data: B64.enc(data) };
+      },
+      async open(acc, pass) {
+        const k = await this.key(pass, B64.dec(acc.salt), acc.iter || this.ITER);
+        const out = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: B64.dec(acc.iv) }, k, B64.dec(acc.data));
+        return new TextDecoder().decode(out);
+      },
+      async hint(token) {
+        const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(token));
+        return [...new Uint8Array(h)].slice(0, 6).map((b) => b.toString(16).padStart(2, '0')).join('');
+      },
+      genPassword() {
+        const chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        const r = crypto.getRandomValues(new Uint32Array(12));
+        const s = [...r].map((n) => chars[n % chars.length]).join('');
+        return `${s.slice(0, 4)}-${s.slice(4, 8)}-${s.slice(8)}`;
+      },
+      /** Version publiée sur le site (lue par les administrateurs, sans jeton) */
+      async fetchPublic() {
+        const r = await fetch('comptes.json?t=' + Date.now(), { cache: 'no-store' });
+        if (r.status === 404) return null;
+        if (!r.ok) throw new Error('Impossible de lire la liste des comptes (erreur ' + r.status + ').');
+        return r.json();
+      },
+      /** Vérifie que le compte connecté existe toujours, est actif et utilise le jeton en cours */
+      async assertActive() {
+        let list;
+        try { list = await this.fetchPublic(); } catch { throw new Error('Impossible de vérifier votre compte. Vérifiez votre connexion internet.'); }
+        const acc = list && (list.accounts || []).find((a) => a.id === S.auth.user);
+        if (!acc) throw Object.assign(new Error('Ce compte a été supprimé par le responsable du site.'), { revoked: true });
+        if (acc.active === false) throw Object.assign(new Error('Ce compte est suspendu. Contactez le responsable du site.'), { revoked: true });
+        if (acc.tokenHint && acc.tokenHint !== await this.hint(S.auth.token)) throw Object.assign(new Error('Votre mot de passe a été changé. Reconnectez-vous.'), { revoked: true });
+        return acc;
+      },
+      async load() {
+        this.data = (await GH.readJson(ACC_FILE)) || { version: 1, accounts: [] };
+        this.data.accounts = this.data.accounts || [];
+        this.currentHint = await this.hint(S.auth.token);
+      },
+      async save(message) {
+        const d = this.data;
+        const out = {
+          version: 1,
+          note: 'Comptes de l’espace admin. Ne pas modifier à la main : utilisez l’onglet « Comptes » de /admin/.',
+          owner: S.auth.owner, repo: S.auth.repo, branch: S.auth.branch, dir: S.auth.dir || '',
+          updatedAt: new Date().toISOString(),
+          accounts: d.accounts
+        };
+        await GH.commit([{ path: ACC_FILE, text: JSON.stringify(out, null, 2) + '\n' }], message, () => { });
+        this.data = out;
+      }
+    };
+
+    /* ---------- Connexion d'un administrateur ---------- */
+    $('#userForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = Accounts.normId($('#uId').value);
+      const pass = $('#uPass').value;
+      if (!id || !pass) return;
+      const btn = $('#userBtn');
+      btn.disabled = true;
+      btn.textContent = 'Vérification…';
+      const fail = (msg) => { S.auth = null; showLogin(msg, 'user'); };
+      try {
+        let list;
+        try { list = await Accounts.fetchPublic(); } catch (err) { return fail(err.message); }
+        const acc = list && (list.accounts || []).find((a) => a.id === id);
+        if (!list || !(list.accounts || []).length) return fail('Aucun compte administrateur n’a encore été créé.');
+        let token = null;
+        if (acc) { try { token = await Accounts.open(acc, pass); } catch { token = null; } }
+        else await Accounts.key(pass, crypto.getRandomValues(new Uint8Array(16)), Accounts.ITER); // même durée qu'un vrai essai
+        if (!token) return fail('Identifiant ou mot de passe incorrect.');
+        if (acc.active === false) return fail('Ce compte est suspendu. Contactez le responsable du site.');
+        S.auth = { owner: list.owner, repo: list.repo, branch: list.branch || '', dir: list.dir || '', token, user: acc.id, name: acc.name || acc.id };
+        try { await GH.checkRepo(); }
+        catch (err) { return fail(err.status === 401 ? 'L’accès de ce compte n’est plus valide. Demandez un nouveau mot de passe au responsable du site.' : err.message); }
+        store.set('lpcms.auth', S.auth, $('#uRemember').checked);
+        await startApp();
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Se connecter';
+      }
+    });
+
+    /* ---------- Gestion des comptes (propriétaire) ---------- */
+    const fmtDate = (iso) => { try { return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }); } catch { return ''; } };
+
+    function renderAccounts() {
+      const list = (Accounts.data && Accounts.data.accounts) || [];
+      $('#cAccounts').textContent = list.length;
+      $('#accList').innerHTML = `<div class="acc-list-title">Administrateurs (${list.length})</div>` + (list.length ? list.map((a) => {
+        const stale = a.tokenHint && a.tokenHint !== Accounts.currentHint;
+        const pill = a.active === false ? '<span class="pill off">Suspendu</span>'
+          : stale ? '<span class="pill warn">Mot de passe à renouveler</span>' : '<span class="pill ok">Autorisé</span>';
+        return `<div class="acc-item${a.active === false ? ' off' : ''}" data-id="${esc(a.id)}">
+          <div class="acc-head"><b>${esc(a.name || a.id)}</b>${pill}</div>
+          <div class="acc-meta">Identifiant : <code>${esc(a.id)}</code>${a.createdAt ? ' · créé le ' + esc(fmtDate(a.createdAt)) : ''}</div>
+          ${stale ? '<div class="acc-meta">Votre jeton GitHub a changé depuis : ce compte ne peut plus publier tant que vous ne lui donnez pas un nouveau mot de passe.</div>' : ''}
+          <div class="acc-actions">
+            <button type="button" class="btn btn-quiet btn-sm" data-act="toggle">${a.active === false ? 'Réactiver' : 'Suspendre'}</button>
+            <button type="button" class="btn btn-quiet btn-sm" data-act="reset">Nouveau mot de passe</button>
+            <button type="button" class="btn btn-quiet btn-sm btn-danger" data-act="delete">Supprimer</button>
+          </div>
+        </div>`;
+      }).join('') : '<div class="acc-empty">Aucun administrateur pour l’instant. Créez le premier compte ci-dessus.</div>');
+    }
+
+    async function saveAccounts(message, okMsg) {
+      const before = clone(Accounts.data);
+      setStatus('busy', 'Enregistrement…');
+      try {
+        await Accounts.save(message);
+        toast(okMsg, 'ok', 6000);
+      } catch (err) {
+        Accounts.data = before;
+        toast(err.message, 'err', 7000);
+        throw err;
+      } finally {
+        renderAccounts();
+        refreshStatus();
+      }
+    }
+
+    function showCredentials(name, id, pass, title) {
+      const url = new URL('.', location.href).href;
+      const text = `Espace admin du site LPELIA\nAdresse : ${url}\nIdentifiant : ${id}\nMot de passe : ${pass}`;
+      const d = dialog(`<h3>${esc(title)}</h3>
+        <p>Transmettez ces informations à <b>${esc(name)}</b>. Le mot de passe ne sera plus affiché ensuite.</p>
+        <div class="cred">Adresse : <code>${esc(url)}</code><br>Identifiant : <code>${esc(id)}</code><br>Mot de passe : <code>${esc(pass)}</code></div>
+        <p class="hint">Le compte fonctionne environ 1 minute après l’enregistrement (le temps que le site se mette à jour).</p>
+        <div class="actions"><button class="btn btn-ghost" data-act="copy">Copier</button><button class="btn btn-primary" data-act="close">Terminé</button></div>`);
+      d.addEventListener('click', async (e) => {
+        const act = e.target.closest('[data-act]')?.dataset.act;
+        if (act === 'close') closeDialog();
+        if (act === 'copy') { try { await navigator.clipboard.writeText(text); toast('Copié.', 'ok'); } catch { toast('Copie impossible : sélectionnez le texte.', 'err'); } }
+      });
+    }
+
+    $('#accGen').addEventListener('click', () => { $('#accPass').value = Accounts.genPassword(); });
+
+    $('#accForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = $('#accName').value.trim();
+      const id = Accounts.normId($('#accId').value);
+      const pass = $('#accPass').value;
+      if (!/^[a-z0-9][a-z0-9._-]{2,29}$/.test(id)) return toast('Identifiant invalide : 3 à 30 caractères (lettres minuscules, chiffres, point, tiret).', 'err', 6000);
+      if (pass.length < 10) return toast('Le mot de passe doit contenir au moins 10 caractères.', 'err');
+      if (Accounts.data.accounts.some((a) => a.id === id)) return toast('Cet identifiant existe déjà.', 'err');
+      const btn = $('#accSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Création…';
+      try {
+        const entry = { id, name, active: true, createdAt: new Date().toISOString(), tokenHint: Accounts.currentHint, ...(await Accounts.seal(S.auth.token, pass)) };
+        Accounts.data.accounts.push(entry);
+        await saveAccounts(`Espace admin : ajout du compte ${id}`, 'Compte créé.');
+        $('#accForm').reset();
+        showCredentials(name, id, pass, 'Compte créé');
+      } catch { /* message déjà affiché */ } finally {
+        btn.disabled = false;
+        btn.textContent = 'Créer le compte';
+      }
+    });
+
+    $('#accList').addEventListener('click', async (e) => {
+      const act = e.target.closest('[data-act]')?.dataset.act;
+      const id = e.target.closest('.acc-item')?.dataset.id;
+      const acc = Accounts.data.accounts.find((a) => a.id === id);
+      if (!act || !acc) return;
+      const label = acc.name || acc.id;
+      if (act === 'toggle') {
+        const off = acc.active !== false;
+        if (off && !confirm(`Suspendre le compte de ${label} ? Il ne pourra plus se connecter ni publier.`)) return;
+        acc.active = !off;
+        try { await saveAccounts(`Espace admin : ${off ? 'suspension' : 'réactivation'} du compte ${id}`, off ? 'Compte suspendu.' : 'Compte réactivé.'); } catch { }
+      }
+      if (act === 'delete') {
+        if (!confirm(`Supprimer définitivement le compte de ${label} ?`)) return;
+        Accounts.data.accounts = Accounts.data.accounts.filter((a) => a.id !== id);
+        try { await saveAccounts(`Espace admin : suppression du compte ${id}`, 'Compte supprimé.'); } catch { }
+      }
+      if (act === 'reset') {
+        const pass = Accounts.genPassword();
+        if (!confirm(`Donner un nouveau mot de passe à ${label} ? L’ancien ne fonctionnera plus.`)) return;
+        Object.assign(acc, { tokenHint: Accounts.currentHint }, await Accounts.seal(S.auth.token, pass));
+        try {
+          await saveAccounts(`Espace admin : nouveau mot de passe pour ${id}`, 'Mot de passe changé.');
+          showCredentials(label, id, pass, 'Nouveau mot de passe');
+        } catch { }
+      }
     });
 
     async function loadContent(discardDraft) {
@@ -1490,12 +1794,19 @@
           S.map = r.ok ? await r.json() : null;
         } catch { S.map = null; }
         await loadContent(false);
+        const isOwner = !S.auth.offline && !S.auth.user;
+        $('#tabAccounts').hidden = !isOwner;
+        if (isOwner) {
+          try { await Accounts.load(); renderAccounts(); }
+          catch (err) { Accounts.data = null; $('#tabAccounts').hidden = true; toast('Comptes administrateurs indisponibles : ' + err.message, 'err', 7000); }
+        }
       } catch (err) {
         if (!S.auth.offline && (err.status === 401 || err.status === 403 || err.status === 404)) { S.auth = null; return showLogin(err.message); }
         $('#loadingView').innerHTML = `<div style="text-align:center;max-width:420px;padding:1rem"><b>Impossible de charger le site.</b><br><span style="font-size:.875rem">${esc(err.message)}. Ouvrez l’admin depuis le site en ligne (ou un serveur local), pas en double-cliquant sur le fichier.</span></div>`;
         return;
       }
-      $('#repoLabel').textContent = S.auth.offline ? 'Mode export manuel (sans GitHub)' : `${S.auth.owner}/${S.auth.repo} · ${S.auth.branch}`;
+      $('#repoLabel').textContent = S.auth.offline ? 'Mode export manuel (sans GitHub)'
+        : S.auth.user ? `Connecté : ${S.auth.name}` : `Propriétaire · ${S.auth.owner}/${S.auth.repo} · ${S.auth.branch}`;
       $('#menuInfo').textContent = S.auth.offline ? 'Les changements sont enregistrés dans un fichier à télécharger.' : `Publication vers ${S.auth.owner}/${S.auth.repo}`;
       $('#btnPublishLabel').textContent = S.auth.offline ? 'Exporter' : 'Publier';
       $('#mLogout').textContent = S.auth.offline ? 'Quitter le mode export' : 'Se déconnecter';
@@ -1509,8 +1820,15 @@
       const saved = store.get('lpcms.auth');
       if (saved && saved.token) {
         S.auth = saved;
-        try { await GH.checkRepo(); await startApp(); }
-        catch (err) { S.auth = null; showLogin(err.status === 401 ? 'Votre session a expiré. Collez un nouveau jeton.' : err.message); }
+        try {
+          if (saved.user) await Accounts.assertActive();
+          await GH.checkRepo();
+          await startApp();
+        } catch (err) {
+          S.auth = null;
+          if (err.revoked || err.status === 401) store.del('lpcms.auth');
+          showLogin(err.status === 401 ? (saved.user ? 'L’accès de ce compte n’est plus valide. Demandez un nouveau mot de passe au responsable du site.' : 'Votre session a expiré. Collez un nouveau jeton.') : err.message, saved.user ? 'user' : 'owner');
+        }
       } else showLogin();
     })();
   </script>
