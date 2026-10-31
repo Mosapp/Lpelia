@@ -5,18 +5,18 @@
   "repo": "Lpelia",
   "branch": "main",
   "dir": "",
-  "updatedAt": "2026-10-30T14:53:31.284Z",
+  "updatedAt": "2026-10-31T17:54:51.125Z",
   "accounts": [
     {
       "id": "vamsy2026-2027",
       "name": "Traoré Vamsy",
       "active": true,
       "createdAt": "2026-10-30T14:53:30.231Z",
-      "tokenHint": "394b57e62dd7",
+      "tokenHint": "2076ba4d347a",
       "iter": 600000,
-      "salt": "fTKirbnU9ME1ywOrwLiGag==",
-      "iv": "BgDRy8a7q1ilLtO2",
-      "data": "AZ/Rghrn/I5wW+F/WsACIAuToTU9jfH3XOKspA4NiBNwhY+JAMNZYy0QKV8Gj5KzviXI+Y6Tg7MasLBGkwlVqNCp30GG5237T+tMdEPdK+p00McZlhgjt24DaiTpWMwXbsrk3aWOuLnjGZIZzg=="
+      "salt": "pYROe6wad3PN9VioiHYTJw==",
+      "iv": "+dhPI28G2LHutTb8",
+      "data": "1EypVj/GehdiLixRj/B7dJNXhuNaL5/Vc4mhudvgKkx7p0upZg62iQhhYzgF0HGG40rQ8FIpsznqHyf4Z5GsGN298mUHvnXtRXph+dAOgcnIlhyzCR4BbA2chPU4DQv7JB3MTWlRkKk1SasrJQ=="
     }
   ]
 }
